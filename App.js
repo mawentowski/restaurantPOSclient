@@ -1,17 +1,24 @@
-import * as React from "react";
-import { AppRegistry } from "react-native";
-import { PaperProvider } from "react-native-paper";
-import { name as appName } from "./app.json";
+import React from "react";
 import { View, Text } from "react-native";
+import {
+  Provider as PaperProvider,
+  Card,
+  Paragraph,
+  Title,
+} from "react-native-paper";
 
-export default function Main() {
+export default function App() {
   return (
     <PaperProvider>
       <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
         <Text>Open up App.js to start working on your app!</Text>
+        <Card>
+          <Card.Content>
+            <Title>Card title</Title>
+            <Paragraph>Card content</Paragraph>
+          </Card.Content>
+        </Card>
       </View>
     </PaperProvider>
   );
 }
-
-AppRegistry.registerComponent(appName, () => Main);
