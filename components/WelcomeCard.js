@@ -1,12 +1,29 @@
 import * as React from "react";
-import { Card, Text } from "react-native-paper";
+import { StyleSheet } from "react-native";
+import { Avatar, Button, Card, Text, TextInput } from "react-native-paper";
 
-const WelcomeCard = () => {
-  <Card>
-    <Card.Content>
-      <Text variant="titleLarge">Card title</Text>
-      <Text variant="bodyMedium">Card content</Text>
-    </Card.Content>
-  </Card>;
-};
-export default WelcomeCard;
+export default function WelcomeCard() {
+  const [text, setText] = React.useState("");
+  return (
+    <Card>
+      <Card.Content style={styles.welcomeCardContainer}>
+        <Text variant="titleLarge">Welcome to Vinnie's!</Text>
+        <Text variant="bodyMedium">Please enter your table number:</Text>
+      </Card.Content>
+      <TextInput
+        label="Table Number"
+        value={text}
+        onChangeText={(text) => setText(text)}
+      />
+      <Button mode="contained" onPress={() => console.log("Pressed")}>
+        Order
+      </Button>
+    </Card>
+  );
+}
+const styles = StyleSheet.create({
+  welcomeCardContainer: {
+    textAlign: "center", // Align text within a component
+    // Additional styles can be added here
+  },
+});
