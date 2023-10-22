@@ -9,7 +9,10 @@ const AppetizerScreen = () => {
   const [selectedItems, setSelectedItems] = useState([]); // Track selected items
 
   const handleAddToCart = (item) => {
+    console.log(`Button pressed for item: ${item.name}`);
     setSelectedItems([...selectedItems, item]);
+    const updatedItems = [...selectedItems, item];
+    console.log("Selected Items:", updatedItems);
   };
 
   const appetizers = menuData.appetizers;
