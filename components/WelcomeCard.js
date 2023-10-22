@@ -13,6 +13,13 @@ export default function WelcomeCard({ navigation }) {
   const [text, setText] = useState("");
   const [tipVisible, setTipVisible] = useState(false);
 
+  // Define a function to filter out non-numeric characters
+  const handleTextChange = (text) => {
+    // Filter out non-numeric characters using a regular expression
+    const numericText = text.replace(/[^0-9]/g, "");
+    setText(numericText);
+  };
+
   const handleSubmit = () => {
     if (text.length === 0) {
       // If the input is empty, show the tip message
@@ -36,11 +43,9 @@ export default function WelcomeCard({ navigation }) {
         <TextInput
           label="Table #"
           value={text}
-          onChangeText={(text) => setText(text)}
+          onChangeText={handleTextChange} // Use the filtered text
           keyboardType="numeric"
           maxLength={2}
-
-          // placeholder="Search..."
         />
 
         <Card.Actions style={styles.cardActions}>
@@ -70,8 +75,5 @@ const styles = StyleSheet.create({
   },
   tip: {
     textAlign: "center",
-    // color: "red",
-    // fontWeight: "bold",
-    // fontSize: 14,
   },
 });

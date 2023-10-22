@@ -29,3 +29,12 @@ I think each component needs `import * as React from "react";`, but not sure.
 Initialize screens from `App.js`
 
 Any function that has a button that navigates to a screen must have a `{ navigation }` argument
+
+Components cannot trigger page navigation themselves, you must pass the `navigation` argument from a screen to a component like:
+
+```jsx
+// screen
+<WelcomeCard navigation={navigation} />
+// component: Then use it as a argument in the component:
+export default function HomeScreen({ navigation })
+```
