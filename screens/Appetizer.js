@@ -1,12 +1,15 @@
 import React from "react";
 import { View } from "react-native";
+import { useState } from "react";
 import { List } from "react-native-paper";
 import MenuItem from "../components/UI/MenuItem"; // Import the custom MenuItem component
 import menuData from "../MenuData";
 
 const AppetizerScreen = () => {
+  const [selectedItems, setSelectedItems] = useState([]); // Track selected items
+
   const handleAddToCart = (item) => {
-    // Add the selected item to the cart or perform other actions
+    setSelectedItems([...selectedItems, item]);
   };
 
   const appetizers = menuData.appetizers;
