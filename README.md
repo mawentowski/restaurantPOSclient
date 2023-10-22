@@ -25,3 +25,7 @@ https://callstack.github.io/react-native-paper/docs/components/Button/
 If you use `StyleSheet`, you must import it _in the file_: `import { StyleSheet } from "react-native"`.
 
 I think each component needs `import * as React from "react";`, but not sure.
+
+Initialize screens from `App.js`
+
+Any function that has a button that navigates to a screen must have a `{ navigation }` argument

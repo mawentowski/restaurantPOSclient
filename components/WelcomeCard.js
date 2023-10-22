@@ -9,7 +9,7 @@ import {
   Dialog,
 } from "react-native-paper";
 
-export default function WelcomeCard() {
+export default function WelcomeCard({ navigation }) {
   const [text, setText] = useState("");
   const [tipVisible, setTipVisible] = useState(false);
 
@@ -21,6 +21,7 @@ export default function WelcomeCard() {
       setTimeout(() => setTipVisible(false), 2000); // 2000 milliseconds (2 seconds)
     } else if (/^\d{1,2}$/.test(text)) {
       // Valid input, you can perform your submission logic here
+      navigation.navigate("Menu"); // Navigate to the "Menu" screen
     }
   };
 
@@ -38,6 +39,7 @@ export default function WelcomeCard() {
           onChangeText={(text) => setText(text)}
           keyboardType="numeric"
           maxLength={2}
+
           // placeholder="Search..."
         />
 
