@@ -5,6 +5,7 @@ import ImageViewer from "./components/ImageViewer";
 const PlaceholderImage = require("./assets/favicon.png");
 import { Avatar } from "react-native-paper";
 import WelcomeCard from "./components/WelcomeCard";
+import { registerRootComponent } from "expo";
 
 export default function App() {
   return (
@@ -36,3 +37,6 @@ export default function App() {
 //     borderRadius: 18,
 //   },
 // });
+
+// register your main component in an Expo app. This is typically used in your App.js file or the entry point of your Expo project to register the root component of your application. Specifucally required to view the web server.
+registerRootComponent(App);

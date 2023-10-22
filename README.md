@@ -1,4 +1,5 @@
 ```shell
+# nodeJS is dependency, check others.
 # create an expo app
 npx create-expo-app AwesomeProject
 cd AwesomeProject
@@ -6,8 +7,11 @@ cd AwesomeProject
 npx expo start
 # Install react native paper
 npm install react-native-paper
-# install expo-clo to view changes on the web simultaneously
-npm install -g expo-cli
+# work on the web: https://docs.expo.dev/workflow/web/
+npx expo install react-dom react-native-web @expo/webpack-config
+# start the webpack dev server with:
+npx expo start --web
+# View at something like http://localhost:19006
 ```
 
 Sample food delivery app:
