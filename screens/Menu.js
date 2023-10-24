@@ -12,14 +12,17 @@ const Menu = () => {
 
   const confirmOrder = () => {
     // Implement your confirm order logic
+    console.log("Ordered confirmed");
   };
 
   const callWaiter = () => {
     // Implement your call waiter logic
+    console.log("Waiter called");
   };
 
   const viewBill = () => {
     // Implement your view bill logic
+    console.log("Bill viewed");
   };
 
   return (
