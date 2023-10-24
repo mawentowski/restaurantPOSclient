@@ -2,8 +2,13 @@ import React from "react";
 import { View } from "react-native";
 import { List, Button, Text } from "react-native-paper";
 
-export default function MenuItem({ item, onAdd }) {
+export default function MenuItem({ item, selectedItems }) {
   const { id, name, description, image, price } = item;
+
+  const handleAddToCart = () => {
+    // Add the item to the selectedItems
+    selectedItems.push(item);
+  };
 
   return (
     <View>
@@ -21,7 +26,7 @@ export default function MenuItem({ item, onAdd }) {
           <Button
             mode="contained"
             style={{ alignSelf: "flex-start" }}
-            onPress={() => onAdd(item)}
+            onPress={handleAddToCart}
           >
             Add +
           </Button>

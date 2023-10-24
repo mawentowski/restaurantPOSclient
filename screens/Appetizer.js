@@ -1,26 +1,22 @@
 import React from "react";
-import { View, Text } from "react-native";
-import MenuItem from "../components/MenuItem"; // Import the custom MenuItem component
+import { View } from "react-native";
+import MenuItem from "../components/MenuItem";
 import menuData from "../MenuData";
 
-const AppetizerScreen = ({ selectedItems, onAddToCart }) => {
+const AppetizerScreen = ({ route }) => {
+  const { selectedItems } = route.params;
   const appetizers = menuData.appetizers;
-
-  const handleAddToCart = (item) => {
-    // Call the onAddToCart function to add the selected item
-    onAddToCart(item);
-  };
 
   return (
     <View>
-      <Text style={{ backgroundColor: "red" }}>Test</Text>
+      {appetizers.map((appetizer) => (
+        <MenuItem
+          key={appetizer.id}
+          item={appetizer}
+          selectedItems={selectedItems}
+        />
+      ))}
     </View>
-    // <View>
-    //   {appetizers.map((appetizer) => (
-    //     <MenuItem key={appetizer.id} item={appetizer} onAdd={handleAddToCart} />
-    //   ))}
-    //   <Text>Test</Text>
-    // </View>
   );
 };
 

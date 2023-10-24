@@ -7,7 +7,7 @@ import AppetizerScreen from "./screens/Appetizer";
 import MainCourseScreen from "./screens/MainCourse";
 
 import DessertScreen from "./screens/Dessert";
-import MenuTabs from "./screens/MenuTabs";
+// import MenuTabs from "./screens/MenuTabs";
 import TabScreen from "./screens/TabScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -28,7 +28,7 @@ export default function App() {
           <Stack.Screen name="Appetizer" component={AppetizerScreen} />
           <Stack.Screen name="MainCourse" component={MainCourseScreen} />
           <Stack.Screen name="Dessert" component={DessertScreen} />
-          <Stack.Screen name="MenuTabs" component={MenuTabs} />
+          {/* <Stack.Screen name="MenuTabs" component={MenuTabs} /> */}
           <Stack.Screen name="TabScreen" component={TabScreen} />
         </Stack.Navigator>
       </NavigationContainer>
