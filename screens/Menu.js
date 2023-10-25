@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, StyleSheet, Image } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AppetizerScreen from "./Appetizer";
 import MainCourseScreen from "./MainCourse";
@@ -39,9 +39,34 @@ const Menu = () => {
         </Tab.Navigator>
         <View
           style={{
-            backgroundColor: "red",
+            width: "100%",
+            backgroundColor: "green",
             flexDirection: "row",
             justifyContent: "space-between",
+          }}
+        >
+          <View style={styles.box}>
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+          </View>
+        </View>
+        <View
+          style={{
+            backgroundColor: "red",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignItems: "stretch",
           }}
         >
           <Button title="Confirm order" onPress={confirmOrder} />
@@ -52,5 +77,19 @@ const Menu = () => {
     </>
   );
 };
+
+const styles = StyleSheet.create({
+  box: {
+    width: "100%",
+    backgroundColor: "blue",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "baseline",
+  },
+  carouselImage: {
+    height: 100,
+    width: 100,
+  },
+});
 
 export default Menu;

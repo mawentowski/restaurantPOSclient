@@ -15,7 +15,8 @@ export default function WelcomeCard({ navigation }) {
   const [tableNumber, setTableNumber] = useState("");
   const [tableNumbers, setTableNumbers] = useState([]);
 
-  // this hook logs state whenever it changes
+  // setTableNumbers is asynchronous, when you log it, it wont be updated yet normally
+  // this hook runs whenever the state is updated
   useEffect(() => {
     console.log(tableNumbers);
   }, [tableNumbers]);
@@ -49,7 +50,7 @@ export default function WelcomeCard({ navigation }) {
       // Valid input, you can perform your submission logic here
       addTableNumberHandler(text);
       addTableNumbersHandler(text);
-      // navigation.navigate("Menu");
+      navigation.navigate("Menu");
     }
   };
 

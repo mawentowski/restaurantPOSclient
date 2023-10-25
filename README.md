@@ -39,6 +39,12 @@ Components cannot trigger page navigation themselves, you must pass the `navigat
 export default function HomeScreen({ navigation })
 ```
 
+Buttons dont support inline styling.
+
+Use view most of the time to do 'box' styling because text or other things its not supported.
+
+STYLES DO NOT CASCADE!!!!!!!!
+
 ## Course: API documentation mastery: full stack technical writing course
 
 SDKs > Sample Apps | Libraries (edit READMEs)
