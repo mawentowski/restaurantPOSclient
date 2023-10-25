@@ -1,4 +1,3 @@
-import React from "react";
 import { View } from "react-native";
 import { List, Button, Text } from "react-native-paper";
 

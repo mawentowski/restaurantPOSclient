@@ -1,4 +1,3 @@
-import React from "react";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AppetizerScreen from "../screens/Appetizer"; // Import the AppetizerScreen component
 import MainCourseScreen from "../screens/MainCourse"; // Import the MainCourseScreen component

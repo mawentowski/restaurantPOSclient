@@ -33,6 +33,7 @@ const Menu = () => {
     console.log("Bill viewed");
   };
 
+  // temporary test, really want to output menu data but not sure how to parse the object
   const carouselItems = [
     {
       text: "1",

@@ -1,4 +1,3 @@
-import React from "react";
 import { View } from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../MenuData";

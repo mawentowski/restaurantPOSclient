@@ -1,4 +1,3 @@
-import React from "react";
 import { Provider as PaperProvider } from "react-native-paper";
 import { registerRootComponent } from "expo";
 import HomeScreen from "./screens/Home";
