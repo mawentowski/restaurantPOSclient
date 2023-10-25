@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Button, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AppetizerScreen from "./Appetizer";
 import MainCourseScreen from "./MainCourse";
@@ -40,12 +47,13 @@ const Menu = () => {
         <View
           style={{
             width: "100%",
-            backgroundColor: "green",
-            flexDirection: "row",
-            justifyContent: "space-between",
+            // height: 100,
+            // backgroundColor: "green",
+            // flexDirection: "row",
+            // justifyContent: "space-between",
           }}
         >
-          <View style={styles.box}>
+          <ScrollView horizontal contentContainerStyle={styles.box}>
             <Image
               style={styles.carouselImage}
               source={require("../assets/icon.png")}
@@ -59,7 +67,15 @@ const Menu = () => {
               style={styles.carouselImage}
               source={require("../assets/icon.png")}
             />
-          </View>
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+          </ScrollView>
         </View>
         <View
           style={{
@@ -80,15 +96,19 @@ const Menu = () => {
 
 const styles = StyleSheet.create({
   box: {
-    width: "100%",
+    // width: "100%",
     backgroundColor: "blue",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "baseline",
+    // flexDirection: "row",
+    // justifyContent: "space-between",
+    // alignItems: "baseline",
   },
   carouselImage: {
+    width: 100, // Set the width of each item
     height: 100,
-    width: 100,
+    backgroundColor: "lightblue",
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
