@@ -3,7 +3,7 @@ const menuData = {
   appetizers: [
     {
       id: "appetizer-1",
-      name: "Appetizer 1",
+      name: "Appetizer X",
       description: "Description for Appetizer 1",
       image: require("./assets/icon.png"),
       price: "$5.50",

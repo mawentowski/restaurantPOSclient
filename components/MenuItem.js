@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { List, Button, Text } from "react-native-paper";
 
+// is passed the appetizer object (or individual item)
 export default function MenuItem({ item }) {
   const { id, name, description, image, price } = item;
 

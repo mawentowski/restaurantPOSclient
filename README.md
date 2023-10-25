@@ -57,95 +57,46 @@ const = () => {
 
 You have import things FOR EVERY FILE.
 
-### component talk to parent component about state
+### MANAGING STATE BETWEEN COMPONENTS
+
+component talk to parent component about state
 
 Pass handler props
 
 See 29.
 https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197384#notes
 
-## Course: API documentation mastery: full stack technical writing course
+### Redux
 
-SDKs > Sample Apps | Libraries (edit READMEs)
+Old state solution: const [selectedItems, setSelectedItems] = useState([]);
 
-## Ideas
+When the `selectedItems` array is empty, hide the `OrderBar` component.
+When click Add button in `MenuItem`, update `selectedItems` array, thereby making the `OrderBar` visible.
 
-## Type of restaurant / recipes
+The `OrderBar` needs to display the images in `MenuData` of menu items that have been selected, with their number of selected as an icon in the top right corner of the image. So, it needs as input the selected item's image from `MenuData` as well as a count of how many have been selected.
 
-Use simple AMerican fare menu where there are layers or ingredients.
-So burgers, etc. Factor in receipes.
+Nice to add a transition from moving in from bottom.
 
-So its like a resturant platform (POS Point of sale ) + KDS (Kitchen Display System)
+So, when you Add an item, it captures the item.
 
-## POS App
+Bill
+Name, Qty, Price
+Item#1
+Subtotal
+Service Charge (5.5%)
+TAX (10%)
+TOTAL
+Order
 
-- Customer loyalty / points
-- Allergies
-
-Hit checkout to appear on KDS.
-
-https://github.com/anggaprytn/Restaurant_Client/tree/master
-
-## KDS - (Kitchen Display System)
-
-https://www.youtube.com/watch?v=Ryo4y7Ier_M
-
-KDS (Kitchen Display System) Impact on Operators & Guests that receives orders from mobile apps.
-Cafeteria stations: grill stations, coffee bar, salad bar -- each have one. --- ipad
-Destirbute tasks to differnet people -- prints out tasks to do.
-The KDS can print a receipt for the order, they can view it like that, or on the monitor. Info on chit.
-Take it off and put it on their line so they can view it hanging up -- concept guide
-The info on the chit has a information architecture that syncs to the ingrediences that are placed in order.
-
-Current orders
-scheduled orders -- takeaway?
-Finished: orders compelted in same day
-
-There's an expeditor that pulls all the orders togehter to either give the bus boy or to give for the takeout station.
-
-### Search
-
-Chefs search for specific order or client
-
-### Filter
-
-Items / Categories
-
-Items - Order type: pickup / in restaurant
-
-## Analytics Board
-
-Most items ordered. Maybe connect to PowerBI.
-
-## Concepts
-
-Map of restaurant with different stations
-They create kitchen diagram using Mermaid
-Maybe architecture diagram using structurzr.
-These are the concept guides.
-
-### Chit
-
-n a restaurant context, a "chit" typically refers to a small piece of paper or a digital order ticket that the kitchen or bar staff uses to record and manage customer orders. When a server takes an order from a customer, they write down the details of the order on a chit or enter it into a point-of-sale (POS) system, which then generates a digital chit. This chit includes information such as the table number, the items ordered, any special instructions, and sometimes the customer's name or other identifying information.
-
-The chit serves as a communication tool between the front-of-house staff (servers) and the back-of-house staff (chefs or kitchen staff and bartenders). It ensures that the kitchen prepares the correct dishes and that the bar makes the correct drinks. Once the order is ready, it is often matched with the chit before being served to the appropriate table.
-
-Chits help streamline the ordering and food preparation process in a restaurant, ensuring that orders are accurate and that food and drinks are delivered to the right tables. They are an essential part of restaurant operations, whether they are written on paper or managed digitally through a POS system.
-
-### Personas
-
-Define personas as YAML then use that for fixtures data to test login.
-
-### Docker
-
-Similar to Symfony next js, you have an attached api reference and conceptual documentation site.
-
-### Tools
-
-Postman
-Curl
-
-### Ideas
-
-Spec-first, code first.
-So you take the perspective of the API developer developing the API then the client.
+```js
+const selectedItems = [
+  {
+    id: "appetizer-1",
+    name: "Appetizer X",
+    description: "Description for Appetizer 1",
+    image: require("./assets/icon.png"),
+    price: "$5.50",
+    count: "1",
+  },
+];
+```
