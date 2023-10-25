@@ -12,6 +12,25 @@ import {
 export default function WelcomeCard({ navigation }) {
   const [text, setText] = useState("");
   const [tipVisible, setTipVisible] = useState(false);
+  const [tableNumber, setTableNumber] = useState("");
+  const [tableNumbers, setTableNumbers] = useState([]);
+
+  // this hook logs state whenever it changes
+  useEffect(() => {
+    console.log(tableNumbers);
+  }, [tableNumbers]);
+
+  // experimenting with updating array
+  function addTableNumbersHandler(text) {
+    setTableNumbers((currentTableNumbers) => [...currentTableNumbers, text]);
+  }
+
+  const addTableNumberHandler = (text) => {
+    setTableNumber(text);
+    // The following cannot access the tableNumber
+    // console.log(`The table number is now ${tableNumber}`);
+    // console.log(text);
+  };
 
   // Define a function to filter out non-numeric characters
   const handleTextChange = (text) => {
@@ -28,7 +47,9 @@ export default function WelcomeCard({ navigation }) {
       setTimeout(() => setTipVisible(false), 2000); // 2000 milliseconds (2 seconds)
     } else if (/^\d{1,2}$/.test(text)) {
       // Valid input, you can perform your submission logic here
-      navigation.navigate("Menu"); // Navigate to the "Menu" screen
+      addTableNumberHandler(text);
+      addTableNumbersHandler(text);
+      // navigation.navigate("Menu");
     }
   };
 
@@ -62,6 +83,12 @@ export default function WelcomeCard({ navigation }) {
           </Dialog.Content>
         </Dialog>
       </Portal>
+      {/* output each item in array */}
+      {/* <View>
+        {tableNumbers.map((tableNumber) => (
+          <Text key={tableNumber}>{tableNumber}</Text>
+        ))}
+      </View> */}
     </View>
   );
 }

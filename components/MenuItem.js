@@ -15,6 +15,7 @@ export default function MenuItem({ item, selectedItems }) {
       <List.Item
         key={id}
         title={name}
+        // style={{marginLeft: 24}}
         description={
           <View>
             <Text>{description}</Text>
