@@ -45,6 +45,16 @@ Use view most of the time to do 'box' styling because text or other things its n
 
 STYLES DO NOT CASCADE!!!!!!!!
 
+Scrollview best for contnt, not lists, which can grow (see ./scroll-view-template.js). It renders all items.
+
+Generate random key
+
+```js
+const = () => {
+    key: Math.random().String()
+}
+```
+
 ## Course: API documentation mastery: full stack technical writing course
 
 SDKs > Sample Apps | Libraries (edit READMEs)

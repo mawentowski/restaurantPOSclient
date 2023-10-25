@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Image,
   ScrollView,
-  FlatList,
 } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import AppetizerScreen from "./Appetizer";
@@ -33,34 +32,6 @@ const Menu = () => {
     console.log("Bill viewed");
   };
 
-  const carouselItems = [
-    {
-      text: "1",
-      id: Math.random().toString(),
-    },
-
-    {
-      text: "2",
-      id: Math.random().toString(),
-    },
-    {
-      text: "3",
-      id: Math.random().toString(),
-    },
-    {
-      text: "4",
-      id: Math.random().toString(),
-    },
-    {
-      text: "5",
-      id: Math.random().toString(),
-    },
-    {
-      text: "6",
-      id: Math.random().toString(),
-    },
-  ];
-
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -82,26 +53,29 @@ const Menu = () => {
             // justifyContent: "space-between",
           }}
         >
-          {/* FLATLIGHT GUIDE:
-          https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197378#notes 
-          */}
-          <FlatList
-            horizontal
-            contentContainerStyle={styles.box}
-            data={carouselItems}
-            renderItem={(itemData) => {
-              return (
-                <Image
-                  style={styles.carouselImage}
-                  alt={itemData.item.text}
-                  source={require("../assets/icon.png")}
-                />
-              );
-            }}
-            keyExtractor={(item, index) => {
-              return item.id;
-            }}
-          ></FlatList>
+          <ScrollView horizontal contentContainerStyle={styles.box}>
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+            <Image
+              style={styles.carouselImage}
+              source={require("../assets/icon.png")}
+            />
+          </ScrollView>
         </View>
         <View
           style={{
