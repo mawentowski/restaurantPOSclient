@@ -55,6 +55,15 @@ const = () => {
 }
 ```
 
+You have import things FOR EVERY FILE.
+
+### component talk to parent component about state
+
+Pass handler props
+
+See 29.
+https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197384#notes
+
 ## Course: API documentation mastery: full stack technical writing course
 
 SDKs > Sample Apps | Libraries (edit READMEs)

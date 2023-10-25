@@ -69,7 +69,7 @@ const Menu = () => {
           <Tab.Screen
             name="Appetizer"
             component={AppetizerScreen}
-            initialParams={{ selectedItems }}
+            // initialParams={{ selectedItems }}
           />
           <Tab.Screen name="MainCourse" component={MainCourseScreen} />
           <Tab.Screen name="Dessert" component={DessertScreen} />

@@ -1,12 +1,12 @@
 import { View } from "react-native";
 import { List, Button, Text } from "react-native-paper";
 
-export default function MenuItem({ item, selectedItems }) {
+export default function MenuItem({ item }) {
   const { id, name, description, image, price } = item;
 
   const handleAddToCart = () => {
     // Add the item to the selectedItems
-    selectedItems.push(item);
+    console.log("Added to cart");
   };
 
   return (
