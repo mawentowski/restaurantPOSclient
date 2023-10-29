@@ -8,6 +8,13 @@ const menuData = {
       image: require("./assets/icon.png"),
       price: "$5.50",
     },
+    {
+      id: "appetizer-2",
+      name: "Appetizer 2",
+      description: "Description for Appetizer 2",
+      image: require("./assets/icon.png"),
+      price: "$6.50",
+    },
     // Add more appetizers here
   ],
   mainCourses: [

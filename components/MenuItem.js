@@ -1,5 +1,5 @@
 import React from "react";
-import { View } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import { List, Button, Text } from "react-native-paper";
 import { CartItemsContext } from "../store/context/cartItemsContext.js";
 import { useContext } from "react";
@@ -22,7 +22,14 @@ export default function MenuItem({ item }) {
   };
 
   return (
-    <View>
+    <View style={styles.cartItem}>
+      <Image style={styles.carouselImage} source={{ image }} />
+      <View style={styles.cardItemInfoContainer}>
+        <Text>{name}</Text>
+        <Text>{price}</Text>
+      </View>
+
+      {/*       
       <List.Item
         key={id}
         title={name}
@@ -47,7 +54,32 @@ export default function MenuItem({ item }) {
             </Text>
           </View>
         )}
-      />
+      /> */}
     </View>
   );
 }
+const styles = StyleSheet.create({
+  cartItem: {
+    flex: "1",
+    // width: 100,
+    height: 150,
+    // justifyContent: "center",
+    // alignItems: "center",
+    // width: "50%",
+    backgroundColor: "red",
+  },
+  imageContainer: {
+    // height: 100,
+    // backgroundColor: "yellow",
+  },
+  cardItemInfoContainer: {},
+
+  carouselImage: {
+    flex: 1,
+    height: "100%",
+    backgroundColor: "yellow",
+    margin: 10,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
