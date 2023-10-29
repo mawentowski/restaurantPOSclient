@@ -1,82 +1,90 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
-import { List, Button, Text } from "react-native-paper";
-import { CartItemsContext } from "../store/context/cartItemsContext.js";
+import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { useContext } from "react";
+import { CartItemsContext } from "../store/context/cartItemsContext.js";
 
-export default function MenuItem({ item }) {
-  const { id, name, description, image, price } = item;
-
+const MenuItem = ({ item }) => {
+  const { id, name, image, price } = item;
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.cartItems[id] || 0;
 
   const addItemToCartHandler = () => {
     cartItemsCtx.addCartItem(id);
-    console.log();
-    // if (itemCount > 0) {
-    //   cartItemsCtx.removeCartItem(id);
-    // } else {
-    //   cartItemsCtx.addCartItem(id);
-    // }
-    console.log("Updated Cart Items:", cartItemsCtx.cartItems);
+  };
+
+  const removeItemFromCartHandler = () => {
+    cartItemsCtx.removeCartItem(id);
   };
 
   return (
     <View style={styles.cartItem}>
-      <Image style={styles.carouselImage} source={{ image }} />
+      <Image style={styles.carouselImage} source={image} />
       <View style={styles.cardItemInfoContainer}>
-        <Text>{name}</Text>
-        <Text>{price}</Text>
+        <Text style={styles.itemName}>{name}</Text>
+        <Text style={styles.itemPrice}>{price}</Text>
       </View>
-
-      {/*       
-      <List.Item
-        key={id}
-        title={name}
-        description={
-          <View>
-            <Text>{description}</Text>
-            <Text style={{ fontWeight: "bold" }}>{price}</Text>
-          </View>
-        }
-        left={(props) => <List.Icon {...props} icon={image} />}
-        right={() => (
-          <View>
-            <Button
-              mode="contained"
-              style={{ alignSelf: "flex-start" }}
-              onPress={addItemToCartHandler}
-            >
-              {itemCount > 0 ? "Remove" : "Add"}
-            </Button>
-            <Text style={{ alignSelf: "center", marginTop: 8 }}>
-              {itemCount > 0 ? `Count: ${itemCount}` : ""}
-            </Text>
-          </View>
+      <View style={styles.cartActions}>
+        <TouchableOpacity
+          style={styles.cartButton}
+          onPress={addItemToCartHandler}
+        >
+          <Text style={styles.cartButtonText}>
+            {itemCount > 0 ? "Add More" : "Add to Cart"}
+          </Text>
+        </TouchableOpacity>
+        {itemCount > 0 && (
+          <TouchableOpacity
+            style={styles.cartButton}
+            onPress={removeItemFromCartHandler}
+          >
+            <Text style={styles.cartButtonText}>Remove</Text>
+          </TouchableOpacity>
         )}
-      /> */}
+      </View>
     </View>
   );
-}
+};
+
 const styles = StyleSheet.create({
   cartItem: {
-    // flex: "1",
-
-    // width: 100,
-    // height: 150,
-    // justifyContent: "center",
-    // alignItems: "center",
-    width: "50%",
-    backgroundColor: "red",
+    flex: 1, // Each item takes up 50% of the screen width
+    backgroundColor: "lightgray",
+    marginBottom: 16, // Add margin for spacing between rows
+    paddingHorizontal: 8, // Add horizontal padding to control spacing at the edges
+    borderRadius: 8,
+    overflow: "hidden",
   },
-  cardItemInfoContainer: {},
-
   carouselImage: {
-    flex: 1,
-    // height: "100%",
-    backgroundColor: "yellow",
-    margin: 10,
+    width: "100%",
+    aspectRatio: 1,
+  },
+  cardItemInfoContainer: {
+    padding: 8,
+  },
+  itemName: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+  itemPrice: {
+    fontSize: 14,
+  },
+  cartActions: {
+    flexDirection: "row",
+
+    justifyContent: "space-between",
     alignItems: "center",
-    justifyContent: "center",
+    padding: 8,
+  },
+  cartButton: {
+    flex: 1,
+    backgroundColor: "blue",
+    padding: 8,
+    alignItems: "center",
+  },
+  cartButtonText: {
+    color: "white",
+    fontWeight: "bold",
   },
 });
+
+export default MenuItem;

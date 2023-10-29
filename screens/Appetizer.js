@@ -1,33 +1,29 @@
-import { View, StyleSheet } from "react-native";
+import React from "react";
+import { StyleSheet, FlatList } from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../MenuData";
 
-const AppetizerScreen = ({}) => {
-  // const { selectedItems } = route.params;
+const AppetizerScreen = () => {
   const appetizers = menuData.appetizers;
 
   return (
-    <View style={styles.cartItemCardsContainer}>
-      {appetizers.map((appetizer) => (
-        <MenuItem key={appetizer.id} item={appetizer} />
-      ))}
-    </View>
+    <FlatList
+      data={appetizers}
+      numColumns={2}
+      contentContainerStyle={styles.cartItemCardsContainer}
+      renderItem={({ item }) => <MenuItem item={item} />}
+      keyExtractor={(item) => item.id}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   cartItemCardsContainer: {
-    // width: "100%",
-    // backgroundColor: "red",
     flexDirection: "row",
-    flexWrap: "wrap",
-    flex: 1,
 
-    // backgroundColor: "blue",
-    // width: 100,
-    // height: 100,
-    // justifyContent: "space-between",
-    // alignItems: "baseline",
+    flexWrap: "wrap",
+    justifyContent: "center",
+    paddingHorizontal: 8, // Add horizontal padding to control spacing at the edges
   },
 });
 
