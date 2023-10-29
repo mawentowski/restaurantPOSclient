@@ -7,12 +7,10 @@ const AppetizerScreen = ({}) => {
   const appetizers = menuData.appetizers;
 
   return (
-    <View>
-      <View style={styles.cartItemCardsContainer}>
-        {appetizers.map((appetizer) => (
-          <MenuItem key={appetizer.id} item={appetizer} />
-        ))}
-      </View>
+    <View style={styles.cartItemCardsContainer}>
+      {appetizers.map((appetizer) => (
+        <MenuItem key={appetizer.id} item={appetizer} />
+      ))}
     </View>
   );
 };
@@ -23,6 +21,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     flexDirection: "row",
     flexWrap: "wrap",
+    flex: 1,
 
     // backgroundColor: "blue",
     // width: 100,

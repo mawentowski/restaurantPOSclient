@@ -61,8 +61,9 @@ export default function MenuItem({ item }) {
 const styles = StyleSheet.create({
   cartItem: {
     // flex: "1",
+
     // width: 100,
-    height: 150,
+    // height: 150,
     // justifyContent: "center",
     // alignItems: "center",
     width: "50%",
