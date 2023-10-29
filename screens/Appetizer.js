@@ -10,11 +10,7 @@ const AppetizerScreen = ({}) => {
     <View>
       <View style={styles.cartItemCardsContainer}>
         {appetizers.map((appetizer) => (
-          <MenuItem
-            key={appetizer.id}
-            item={appetizer}
-            style={styles.cartItemCard}
-          />
+          <MenuItem key={appetizer.id} item={appetizer} />
         ))}
       </View>
     </View>
@@ -26,22 +22,13 @@ const styles = StyleSheet.create({
     // width: "100%",
     // backgroundColor: "red",
     flexDirection: "row",
+    flexWrap: "wrap",
+
     // backgroundColor: "blue",
     // width: 100,
     // height: 100,
     // justifyContent: "space-between",
     // alignItems: "baseline",
-    flex: 1,
-  },
-  cartItemCard: {
-    // backgroundColor: "lightblue",
-    // backgroundColor: "green",
-    // flex: 1,
-    // width: 100,
-    // height: 100,
-    // justifyContent: "center",
-    // alignItems: "center",
-    // flexDirection: "column",
   },
 });
 

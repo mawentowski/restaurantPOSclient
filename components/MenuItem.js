@@ -60,23 +60,19 @@ export default function MenuItem({ item }) {
 }
 const styles = StyleSheet.create({
   cartItem: {
-    flex: "1",
+    // flex: "1",
     // width: 100,
     height: 150,
     // justifyContent: "center",
     // alignItems: "center",
-    // width: "50%",
+    width: "50%",
     backgroundColor: "red",
-  },
-  imageContainer: {
-    // height: 100,
-    // backgroundColor: "yellow",
   },
   cardItemInfoContainer: {},
 
   carouselImage: {
     flex: 1,
-    height: "100%",
+    // height: "100%",
     backgroundColor: "yellow",
     margin: 10,
     alignItems: "center",
