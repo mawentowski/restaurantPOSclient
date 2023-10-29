@@ -1,13 +1,24 @@
+import React from "react";
 import { View } from "react-native";
 import { List, Button, Text } from "react-native-paper";
+import { CartItemsContext } from "../store/context/cartItemsContext.js";
+import { useContext } from "react";
 
-// is passed the appetizer object (or individual item)
 export default function MenuItem({ item }) {
   const { id, name, description, image, price } = item;
 
-  const handleAddToCart = () => {
-    // Add the item to the selectedItems
-    console.log("Added to cart");
+  const cartItemsCtx = useContext(CartItemsContext);
+  const itemCount = cartItemsCtx.cartItems[id] || 0;
+
+  const addItemToCartHandler = () => {
+    cartItemsCtx.addCartItem(id);
+    console.log();
+    // if (itemCount > 0) {
+    //   cartItemsCtx.removeCartItem(id);
+    // } else {
+    //   cartItemsCtx.addCartItem(id);
+    // }
+    console.log("Updated Cart Items:", cartItemsCtx.cartItems);
   };
 
   return (
@@ -15,7 +26,6 @@ export default function MenuItem({ item }) {
       <List.Item
         key={id}
         title={name}
-        // style={{marginLeft: 24}}
         description={
           <View>
             <Text>{description}</Text>
@@ -24,13 +34,18 @@ export default function MenuItem({ item }) {
         }
         left={(props) => <List.Icon {...props} icon={image} />}
         right={() => (
-          <Button
-            mode="contained"
-            style={{ alignSelf: "flex-start" }}
-            onPress={handleAddToCart}
-          >
-            Add +
-          </Button>
+          <View>
+            <Button
+              mode="contained"
+              style={{ alignSelf: "flex-start" }}
+              onPress={addItemToCartHandler}
+            >
+              {itemCount > 0 ? "Remove" : "Add"}
+            </Button>
+            <Text style={{ alignSelf: "center", marginTop: 8 }}>
+              {itemCount > 0 ? `Count: ${itemCount}` : ""}
+            </Text>
+          </View>
         )}
       />
     </View>
