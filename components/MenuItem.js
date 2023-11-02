@@ -8,7 +8,7 @@ import {
   Pressable,
 } from "react-native";
 import { useContext } from "react";
-import { CartItemsContext } from "../store/context/cartItemsContext.js";
+import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
 const MenuItem = ({ item, navigation }) => {
   const { id, name, image, price } = item;

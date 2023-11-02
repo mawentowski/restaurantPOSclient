@@ -8,7 +8,7 @@ import DessertScreen from "./screens/Dessert";
 import CartItemScreen from "./screens/CartItem";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import CartItemsContextProvider from "./store/context/cartItemsContext";
+import CartItemsContextProvider from "./store/context/CartItemsContext";
 
 const Stack = createNativeStackNavigator();
 

@@ -1,9 +1,10 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const CartItemsContext = createContext({
   cartItems: {},
   addCartItem: (id) => {},
   removeCartItem: (id) => {},
+  setCartItemQuantity: (id, quantity) => {},
   getCartItemQuantity: (id) => 0,
 });
 
@@ -21,9 +22,17 @@ function CartItemsContextProvider({ children }) {
   function removeCartItem(id) {
     setCartItems((currentCartItems) => {
       const updatedCartItems = { ...currentCartItems };
-      if (updatedCartItems[id] && updatedCartItems[id] > 0) {
-        updatedCartItems[id] -= 1;
+      if (updatedCartItems.hasOwnProperty(id)) {
+        delete updatedCartItems[id];
       }
+      return updatedCartItems;
+    });
+  }
+
+  function setCartItemQuantity(id, quantity) {
+    setCartItems((currentCartItems) => {
+      const updatedCartItems = { ...currentCartItems };
+      updatedCartItems[id] = quantity;
       return updatedCartItems;
     });
   }
@@ -36,6 +45,7 @@ function CartItemsContextProvider({ children }) {
     cartItems,
     addCartItem,
     removeCartItem,
+    setCartItemQuantity,
     getCartItemQuantity,
   };
 

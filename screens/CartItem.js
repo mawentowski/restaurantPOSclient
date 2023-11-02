@@ -1,21 +1,29 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import CounterComponent from "../components/Counter";
-import { CartItemsContext } from "./CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
 const CartItemScreen = ({ route, navigation }) => {
   const item = route.params;
-  const { getCartItemQuantity } = useContext(CartItemsContext);
+  const cartItemsCtx = useContext(CartItemsContext);
 
   // Set the initial count based on the item in the cart or default to 1
-  const initialCount = getCartItemQuantity(item.id) || 1;
+  const initialCount = cartItemsCtx.getCartItemQuantity(item.id) || 1;
 
   const [count, setCount] = useState(initialCount);
+
+  // State variable to store currentQuantity
+  const [currentQuantity, setCurrentQuantity] = useState(0);
 
   useEffect(() => {
     console.log("count type:", typeof count);
     console.log("item.price type:", typeof item.price);
   });
+
+  useEffect(() => {
+    // Fetch the current quantity when the component mounts
+    setCurrentQuantity(cartItemsCtx.getCartItemQuantity(item.id));
+  }, [item.id, cartItemsCtx]);
 
   const increment = () => {
     setCount(count + 1);
@@ -26,6 +34,10 @@ const CartItemScreen = ({ route, navigation }) => {
   };
 
   const buttonStyle = count === 0 ? styles.greenButton : styles.blueButton;
+
+  useEffect(() => {
+    console.log(cartItemsCtx);
+  });
 
   return (
     <View>
@@ -42,22 +54,30 @@ const CartItemScreen = ({ route, navigation }) => {
       <Button
         title={
           count === 0
-            ? "Back to Menu"
+            ? currentQuantity !== 0
+              ? "Remove from basket"
+              : "Back to Menu"
             : `Add to basket - $${count * item.price}`
         }
         onPress={() => {
-          if (count === 0) {
-            // Handle "Back to Menu" action
-            console.log("Back to Menu");
-            // For example, navigate to a different screen
-            navigation.navigate("Appetizer");
-          } else {
-            console.log("Add to basket");
-            // Handle "Add to basket" action
-            // For example, add the item to the basket
+          if (count !== currentQuantity) {
+            // If the count is different, update the cart with the new quantity
+            cartItemsCtx.setCartItemQuantity(item.id, count);
+            console.log("Quantity updated");
           }
+          if (count === 0 && currentQuantity !== 0) {
+            cartItemsCtx.removeCartItem(item.id);
+          }
+
+          navigation.navigate("Menu");
         }}
-        style={buttonStyle}
+        // cant get styling to work
+        style={[
+          styles.button,
+          count !== 0 && styles.greenButton,
+          count === 0 && currentQuantity !== 0 && styles.redButton,
+          count === 0 && currentQuantity === 0 && styles.blueButton,
+        ]}
       />
     </View>
   );
@@ -80,11 +100,15 @@ const styles = StyleSheet.create({
   count: {
     fontSize: 18,
   },
+  greenButton: {
+    color: "green",
+  },
   blueButton: {
     color: "blue",
   },
-  greenButton: {
-    color: "green",
+
+  redButton: {
+    color: "red",
   },
 });
 
