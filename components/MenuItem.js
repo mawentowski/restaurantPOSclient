@@ -33,7 +33,7 @@ const MenuItem = ({ item, navigation }) => {
     <Pressable
       style={styles.cartItem}
       onPress={() => {
-        navigation.navigate("CartItem");
+        navigation.navigate("CartItem", item);
       }}
     >
       {/* Your view contents */}
