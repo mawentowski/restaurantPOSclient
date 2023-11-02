@@ -3,7 +3,7 @@ import { StyleSheet, FlatList } from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../MenuData";
 
-const AppetizerScreen = () => {
+const AppetizerScreen = ({ navigation }) => {
   const appetizers = menuData.appetizers;
 
   return (
@@ -11,7 +11,9 @@ const AppetizerScreen = () => {
       data={appetizers}
       numColumns={2}
       contentContainerStyle={styles.cartItemCardsContainer}
-      renderItem={({ item }) => <MenuItem item={item} />}
+      renderItem={({ item }) => (
+        <MenuItem item={item} navigation={navigation} />
+      )}
       keyExtractor={(item) => item.id}
     />
   );

@@ -1,9 +1,16 @@
-import React from "react";
-import { View, Image, Text, StyleSheet, TouchableOpacity } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Pressable,
+} from "react-native";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/cartItemsContext.js";
 
-const MenuItem = ({ item }) => {
+const MenuItem = ({ item, navigation }) => {
   const { id, name, image, price } = item;
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.cartItems[id] || 0;
@@ -16,15 +23,28 @@ const MenuItem = ({ item }) => {
     cartItemsCtx.removeCartItem(id);
   };
 
+  useEffect(() => {
+    console.log(cartItemsCtx);
+  });
+
+  // navigation.navigate("CartItem");
+  // onPress={() => {}}
   return (
-    <View style={styles.cartItem}>
+    <Pressable
+      style={styles.cartItem}
+      onPress={() => {
+        navigation.navigate("CartItem");
+      }}
+    >
+      {/* Your view contents */}
+
       <Image style={styles.carouselImage} source={image} />
       <View style={styles.cardItemInfoContainer}>
         <Text style={styles.itemName}>{name}</Text>
         <Text style={styles.itemPrice}>{price}</Text>
       </View>
       <View style={styles.cartActions}>
-        <TouchableOpacity
+        {/* <TouchableOpacity
           style={styles.cartButton}
           onPress={addItemToCartHandler}
         >
@@ -39,9 +59,9 @@ const MenuItem = ({ item }) => {
           >
             <Text style={styles.cartButtonText}>Remove</Text>
           </TouchableOpacity>
-        )}
+        )} */}
       </View>
-    </View>
+    </Pressable>
   );
 };
 
