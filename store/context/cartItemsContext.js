@@ -4,6 +4,7 @@ export const CartItemsContext = createContext({
   cartItems: {},
   addCartItem: (id) => {},
   removeCartItem: (id) => {},
+  getCartItemQuantity: (id) => 0,
 });
 
 function CartItemsContextProvider({ children }) {
@@ -27,10 +28,15 @@ function CartItemsContextProvider({ children }) {
     });
   }
 
+  function getCartItemQuantity(id) {
+    return cartItems[id] || 0;
+  }
+
   const value = {
     cartItems,
     addCartItem,
     removeCartItem,
+    getCartItemQuantity,
   };
 
   return (

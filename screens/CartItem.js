@@ -1,11 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import CounterComponent from "../components/Counter";
+import { CartItemsContext } from "./CartItemsContext"; // Import your CartItemsContext
 
 const CartItemScreen = ({ route, navigation }) => {
   const item = route.params;
+  const { getCartItemQuantity } = useContext(CartItemsContext);
 
-  const [count, setCount] = useState(1); // Start with a count of 1
+  // Set the initial count based on the item in the cart or default to 1
+  const initialCount = getCartItemQuantity(item.id) || 1;
+
+  const [count, setCount] = useState(initialCount);
+
+  useEffect(() => {
+    console.log("count type:", typeof count);
+    console.log("item.price type:", typeof item.price);
+  });
 
   const increment = () => {
     setCount(count + 1);
@@ -14,11 +24,6 @@ const CartItemScreen = ({ route, navigation }) => {
   const decrement = () => {
     setCount(count > 0 ? count - 1 : 0);
   };
-
-  useEffect(() => {
-    console.log("count type:", typeof count);
-    console.log("item.price type:", typeof item.price);
-  });
 
   const buttonStyle = count === 0 ? styles.greenButton : styles.blueButton;
 
@@ -82,4 +87,5 @@ const styles = StyleSheet.create({
     color: "green",
   },
 });
+
 export default CartItemScreen;
