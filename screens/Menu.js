@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Appbar, FAB, useTheme } from "react-native-paper";
 import {
   View,
@@ -15,6 +15,7 @@ import MainCourseScreen from "./MainCourse";
 import DessertScreen from "./Dessert";
 import OrderBar from "../components/OrderBar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
 const Tab = createMaterialTopTabNavigator();
 const BOTTOM_APPBAR_HEIGHT = 80;
@@ -24,6 +25,46 @@ const Menu = () => {
   // const [selectedItems, setSelectedItems] = useState([]);
   const { bottom } = useSafeAreaInsets();
   const theme = useTheme();
+
+  const appBarPressHandler = () => {
+    console.log("Bottom bar pressed");
+  };
+  const cartItemsCtx = useContext(CartItemsContext);
+  const itemCount = cartItemsCtx.getTotalItems();
+
+  const RenderAppBar = () => {
+    if (itemCount > 0) {
+      return (
+        <Appbar
+          style={[
+            styles.bottom,
+            {
+              height: BOTTOM_APPBAR_HEIGHT + bottom,
+              backgroundColor: theme.colors.elevation.level2,
+            },
+          ]}
+          safeAreaInsets={{ bottom }}
+        >
+          <Appbar.Content title={<BasketSummary />}></Appbar.Content>
+
+          {/* <Appbar.Action icon="archive" onPress={() => {}} />
+          <Appbar.Action icon="email" onPress={() => {}} />
+          <Appbar.Action icon="label" onPress={() => {}} />
+          <Appbar.Action icon="delete" onPress={() => {}} />
+          <FAB
+            mode="flat"
+            size="medium"
+            icon="plus"
+            onPress={() => {}}
+            style={[
+              styles.fab,
+              { top: (BOTTOM_APPBAR_HEIGHT - MEDIUM_FAB_HEIGHT) / 2 },
+            ]}
+          /> */}
+        </Appbar>
+      );
+    }
+  };
   return (
     <>
       <View style={{ flex: 1 }}>
@@ -37,33 +78,26 @@ const Menu = () => {
           <Tab.Screen name="Dessert" component={DessertScreen} /> */}
         </Tab.Navigator>
         {/* <OrderBar /> */}
-        <Appbar
-          style={[
-            styles.bottom,
-            {
-              height: BOTTOM_APPBAR_HEIGHT + bottom,
-              backgroundColor: theme.colors.elevation.level2,
-            },
-          ]}
-          safeAreaInsets={{ bottom }}
-        >
-          <Appbar.Action icon="archive" onPress={() => {}} />
-          <Appbar.Action icon="email" onPress={() => {}} />
-          <Appbar.Action icon="label" onPress={() => {}} />
-          <Appbar.Action icon="delete" onPress={() => {}} />
-          <FAB
-            mode="flat"
-            size="medium"
-            icon="plus"
-            onPress={() => {}}
-            style={[
-              styles.fab,
-              { top: (BOTTOM_APPBAR_HEIGHT - MEDIUM_FAB_HEIGHT) / 2 },
-            ]}
-          />
-        </Appbar>
+
+        <RenderAppBar />
       </View>
     </>
+  );
+};
+
+const BasketSummary = () => {
+  const cartItemsCtx = useContext(CartItemsContext);
+  const itemCount = cartItemsCtx.getTotalItems();
+  return (
+    <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <Text>Basket</Text>
+
+      <Image
+        style={styles.dot}
+        source={require("../assets/circle-solid.svg")}
+      />
+      <Text>{itemCount} Items</Text>
+    </View>
   );
 };
 
@@ -78,6 +112,14 @@ const styles = StyleSheet.create({
   fab: {
     position: "absolute",
     right: 16,
+  },
+  dot: {
+    width: 5,
+    height: 5,
+    alignSelf: "center",
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 2,
   },
 });
 

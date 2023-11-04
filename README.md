@@ -66,6 +66,12 @@ Pass handler props
 See 29.
 https://www.udemy.com/course/react-native-the-practical-guide/learn/lecture/31197384#notes
 
+This is how you pass a component as a argument:
+
+```javascript
+<Appbar.Content title={<BasketSummary />}></Appbar.Content>
+```
+
 ### Redux
 
 Old state solution: const [selectedItems, setSelectedItems] = useState([]);

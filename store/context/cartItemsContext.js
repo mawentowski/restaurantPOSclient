@@ -6,6 +6,8 @@ export const CartItemsContext = createContext({
   removeCartItem: (id) => {},
   setCartItemQuantity: (id, quantity) => {},
   getCartItemQuantity: (id) => 0,
+  getTotalItems: () => 0,
+  getTotalCost: () => 0,
 });
 
 function CartItemsContextProvider({ children }) {
@@ -41,12 +43,22 @@ function CartItemsContextProvider({ children }) {
     return cartItems[id] || 0;
   }
 
+  function getTotalItems() {
+    const quantities = Object.values(cartItems);
+    return quantities.reduce((total, quantity) => total + quantity, 0);
+  }
+  // function getTotalCost() {
+  //   const quantities = Object.values(cartItems);
+  //   return quantities.reduce((total, quantity) => total + quantity, 0);
+  // }
+
   const value = {
     cartItems,
     addCartItem,
     removeCartItem,
     setCartItemQuantity,
     getCartItemQuantity,
+    getTotalItems,
   };
 
   return (
