@@ -32,6 +32,25 @@ const Menu = ({ navigation }) => {
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.getTotalItems();
 
+  // You'll have to pass these as part of initial params to the course, thenm down to the Menu item
+  // MENU > COURSE > MENUITEM
+
+  // const [showMakeAnother, setShowMakeAnother] = useState(false);
+  // const handleMenuItemPress = () => {
+  //   if (cartItemQuantity > 0) {
+  //     setShowMakeAnother(true);
+  //   } else {
+  //     navigation.navigate("CartItem", item);
+  //   }
+  // };
+  // useEffect(() => {
+  //   console.log(cartItemsCtx);
+  //   console.log("The cartitemquanity is: ", cartItemQuantity);
+  //   console.log("The showMakeAnother: ", showMakeAnother);
+  // });
+
+  // See the return statement for the condition
+
   const RenderAppBar = () => {
     if (itemCount > 0) {
       return (
@@ -90,6 +109,13 @@ const Menu = ({ navigation }) => {
         {/* <OrderBar /> */}
 
         <RenderAppBar />
+
+        {/* {showMakeAnother && (
+        <MakeAnother
+          visible={showMakeAnother}
+          onClose={() => setShowMakeAnother(false)}
+        />
+      )}  */}
       </View>
     </>
   );
