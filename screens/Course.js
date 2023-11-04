@@ -3,8 +3,9 @@ import { StyleSheet, FlatList } from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../menuData";
 
-const CourseScreen = ({ navigation, course }) => {
+const CourseScreen = ({ navigation, route }) => {
   // const courseData = menuData[course];
+  const { course } = route.params;
 
   useEffect(() => {
     console.log("course:", course);

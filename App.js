@@ -31,7 +31,13 @@ export default function App() {
             <Stack.Screen name="Dessert" component={DessertScreen} />
             <Stack.Screen name="CartItem" component={CartItemScreen} />
             <Stack.Screen name="Basket" component={BasketScreen} />
-            <Stack.Screen name="Course" component={CourseScreen} />
+            {/* <Stack.Screen name="Course" component={CourseScreen} /> */}
+
+            <Stack.Screen
+              name="CourseScreen"
+              component={CourseScreen}
+              initialParams={{}}
+            />
           </Stack.Navigator>
         </NavigationContainer>
       </CartItemsContextProvider>

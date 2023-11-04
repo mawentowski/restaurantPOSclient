@@ -75,17 +75,18 @@ const Menu = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <Tab.Navigator>
           <Tab.Screen
-            name="Appetizers"
-            component={() => <CourseScreen course="appetizers" />}
+            name="Appetizer"
+            component={CourseScreen}
+            initialParams={{ course: "appetizers" }}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Main Courses"
             component={() => <CourseScreen course="mainCourses" />}
           />
           <Tab.Screen
             name="Desserts"
             component={() => <CourseScreen course="desserts" />}
-          />
+          /> */}
 
           {/* <Tab.Screen name="MainCourse" component={MainCourseScreen} />
           <Tab.Screen name="Dessert" component={DessertScreen} /> */}

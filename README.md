@@ -102,6 +102,13 @@ useEffect(() => { console.log("count type:", typeof count);
   // pass util functions (traditional exported JS functions) and accessing specific functions
 import * as calculateCostUtils from "../utils/calculateCost";
 const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
+// Pass arguments with navigation:
+onPress={() => {
+  navigation.navigate("CartItem", { item: item });
+}}
+// then...
+const CartItemScreen = ({ route, navigation }) => {
+  const { item } = route.params;
 ```
 
 ### Redux
