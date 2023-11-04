@@ -11,14 +11,11 @@ import {
 } from "react-native";
 import { Pressable } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import AppetizerScreen from "./Appetizer";
-import MainCourseScreen from "./MainCourse";
-import DessertScreen from "./Dessert";
-import OrderBar from "../components/OrderBar";
+// import OrderBar from "../components/OrderBar";
 import CourseScreen from "./Course";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
-import { TouchableOpacity } from "react-native-web";
+// import { TouchableOpacity } from "react-native-web";
 
 const Tab = createMaterialTopTabNavigator();
 const BOTTOM_APPBAR_HEIGHT = 80;
@@ -79,17 +76,16 @@ const Menu = ({ navigation }) => {
             component={CourseScreen}
             initialParams={{ course: "appetizers" }}
           />
-          {/* <Tab.Screen
-            name="Main Courses"
-            component={() => <CourseScreen course="mainCourses" />}
+          <Tab.Screen
+            name="Main Course"
+            component={CourseScreen}
+            initialParams={{ course: "mainCourses" }}
           />
           <Tab.Screen
-            name="Desserts"
-            component={() => <CourseScreen course="desserts" />}
-          /> */}
-
-          {/* <Tab.Screen name="MainCourse" component={MainCourseScreen} />
-          <Tab.Screen name="Dessert" component={DessertScreen} /> */}
+            name="Dessert"
+            component={CourseScreen}
+            initialParams={{ course: "desserts" }}
+          />
         </Tab.Navigator>
         {/* <OrderBar /> */}
 

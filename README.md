@@ -109,6 +109,18 @@ onPress={() => {
 // then...
 const CartItemScreen = ({ route, navigation }) => {
   const { item } = route.params;
+  // for tabs you have to use initial params to pass props to screen component:
+<Tab.Screen
+  name="Main Course"
+  component={CourseScreen}
+  initialParams={{ course: "mainCourses" }}
+/>
+// Then...define in App.js
+<Stack.Screen
+  name="CourseScreen"
+  component={CourseScreen}
+  initialParams={{}}
+/>
 ```
 
 ### Redux
