@@ -11,10 +11,12 @@ import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
 
-const MenuItem = ({ item, navigation }) => {
+const MenuItem = ({ handleMenuItemPress, item }) => {
   const { id, name, image, price } = item;
   const cartItemsCtx = useContext(CartItemsContext);
-  const itemCount = cartItemsCtx.cartItems[id] || 0;
+  // const itemCount = cartItemsCtx.cartItems[id] || 0;
+
+  const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
 
   const addItemToCartHandler = () => {
     cartItemsCtx.addCartItem(id);
@@ -25,7 +27,7 @@ const MenuItem = ({ item, navigation }) => {
   };
 
   useEffect(() => {
-    console.log(cartItemsCtx);
+    console.log("The cartItemQuantity is:", cartItemQuantity);
   });
 
   // navigation.navigate("CartItem");
@@ -34,7 +36,7 @@ const MenuItem = ({ item, navigation }) => {
     <Pressable
       style={styles.cartItem}
       onPress={() => {
-        navigation.navigate("CartItem", { item: item });
+        handleMenuItemPress(item, cartItemQuantity);
       }}
     >
       {/* Your view contents */}

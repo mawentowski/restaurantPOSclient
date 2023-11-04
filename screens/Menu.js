@@ -16,6 +16,7 @@ import CourseScreen from "./Course";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 // import { TouchableOpacity } from "react-native-web";
+import MakeAnother from "../components/MakeAnother";
 
 const Tab = createMaterialTopTabNavigator();
 const BOTTOM_APPBAR_HEIGHT = 80;
@@ -35,20 +36,24 @@ const Menu = ({ navigation }) => {
   // You'll have to pass these as part of initial params to the course, thenm down to the Menu item
   // MENU > COURSE > MENUITEM
 
-  // const [showMakeAnother, setShowMakeAnother] = useState(false);
-  const handleMenuItemPress = () => {
-    // if (cartItemQuantity > 0) {
-    //   setShowMakeAnother(true);
-    // } else {
-    //   navigation.navigate("CartItem", item);
-    // }
-    console.log("handleMenuItemPress was triggered by the DessertScreen");
+  const [showMakeAnother, setShowMakeAnother] = useState(false);
+
+  const handleMenuItemPress = (item, cartItemQuantity) => {
+    console.log("the item.id is:", item.id);
+    console.log(
+      "The cartItemQuantity registered by handMenuItemPress is:",
+      cartItemQuantity
+    );
+
+    if (cartItemQuantity > 0) {
+      setShowMakeAnother(true);
+      console.log("The cartItemQuantity > 0");
+    } else {
+      console.log("The cartItemQuantity = 0");
+      navigation.navigate("CartItem", { item: item });
+    }
+    console.log("The handleMenuItemPress was pressed");
   };
-  // useEffect(() => {
-  //   console.log(cartItemsCtx);
-  //   console.log("The cartitemquanity is: ", cartItemQuantity);
-  //   console.log("The showMakeAnother: ", showMakeAnother);
-  // });
 
   // See the return statement for the condition
 
@@ -92,19 +97,22 @@ const Menu = ({ navigation }) => {
     <>
       <View style={{ flex: 1 }}>
         <Tab.Navigator>
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Dessert"
             component={CourseScreen}
             initialParams={{
               course: "desserts",
               handleMenuItemPress: handleMenuItemPress,
             }}
-          />
-          {/* <Tab.Screen
+          /> */}
+          <Tab.Screen
             name="Appetizer"
             component={CourseScreen}
-            initialParams={{ course: "appetizers",handleMenuItemPress: handleMenuItemPress }}
-          /> */}
+            initialParams={{
+              course: "appetizers",
+              handleMenuItemPress: handleMenuItemPress,
+            }}
+          />
 
           {/* <Tab.Screen
             name="Main Course"
@@ -121,12 +129,13 @@ const Menu = ({ navigation }) => {
 
         <RenderAppBar />
 
+        {showMakeAnother && <MakeAnother />}
         {/* {showMakeAnother && (
-        <MakeAnother
-          visible={showMakeAnother}
-          onClose={() => setShowMakeAnother(false)}
-        />
-      )}  */}
+          <MakeAnother
+            visible={showMakeAnother}
+            onClose={() => setShowMakeAnother(false)}
+          />
+        )} */}
       </View>
     </>
   );

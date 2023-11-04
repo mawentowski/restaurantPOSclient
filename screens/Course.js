@@ -13,18 +13,24 @@ const CourseScreen = ({ navigation, route }) => {
   // });
 
   return (
-    <Pressable onPress={handleMenuItemPress}>Test</Pressable>
+    // <Pressable onPress={handleMenuItemPress}>Test</Pressable>
 
-    // <FlatList
-    //   data={menuData[course]}
-    //   numColumns={2}
-    //   contentContainerStyle={styles.cartItemCardsContainer}
-    //   renderItem={({ item }) => {
-    //     console.log("item:", item);
-    //     return <MenuItem item={item} navigation={navigation} />;
-    //   }}
-    //   keyExtractor={(item) => item.id}
-    // />
+    <FlatList
+      data={menuData[course]}
+      numColumns={2}
+      contentContainerStyle={styles.cartItemCardsContainer}
+      renderItem={({ item }) => {
+        console.log("item:", item);
+        return (
+          <MenuItem
+            item={item}
+            navigation={navigation}
+            handleMenuItemPress={handleMenuItemPress}
+          />
+        );
+      }}
+      keyExtractor={(item) => item.id}
+    />
   );
 };
 
