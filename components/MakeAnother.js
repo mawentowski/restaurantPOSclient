@@ -1,29 +1,30 @@
 import * as React from "react";
 import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
+import { View, StyleSheet } from "react-native";
 
 const MakeAnother = ({ visible, onClose }) => {
-  const containerStyle = {
-    backgroundColor: "white",
-    padding: 20,
-    elevation: 5,
-  };
-
   return (
-    <PaperProvider>
+    <View>
       <Portal>
         <Modal
           visible={visible}
           onDismiss={onClose}
-          contentContainerStyle={containerStyle}
+          contentContainerStyle={styles.containerStyle}
         >
           <Text>Example Modal. Click outside this area to dismiss.</Text>
         </Modal>
       </Portal>
-      <Button style={{ marginTop: 30 }} onPress={onClose}>
-        Close
-      </Button>
-    </PaperProvider>
+    </View>
   );
 };
+
+const styles = StyleSheet.create({
+  containerStyle: {
+    backgroundColor: "white",
+    padding: 20,
+    elevation: 5,
+    marginTop: "auto",
+  },
+});
 
 export default MakeAnother;
