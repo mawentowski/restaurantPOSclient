@@ -129,13 +129,14 @@ const Menu = ({ navigation }) => {
 
         <RenderAppBar />
 
-        {showMakeAnother && <MakeAnother />}
-        {/* {showMakeAnother && (
+        {/* {showMakeAnother && <MakeAnother />} */}
+        {showMakeAnother && (
           <MakeAnother
+            // it will be true
             visible={showMakeAnother}
             onClose={() => setShowMakeAnother(false)}
           />
-        )} */}
+        )}
       </View>
     </>
   );
