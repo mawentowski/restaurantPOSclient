@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import * as calculateCostUtils from "../utils/calculateCost";
 
 const MenuItem = ({ item, navigation }) => {
   const { id, name, image, price } = item;
@@ -41,7 +42,9 @@ const MenuItem = ({ item, navigation }) => {
       <Image style={styles.carouselImage} source={image} />
       <View style={styles.cardItemInfoContainer}>
         <Text style={styles.itemName}>{name}</Text>
-        <Text style={styles.itemPrice}>{price}</Text>
+        <Text style={styles.itemPrice}>
+          {calculateCostUtils.roundCost(price)}
+        </Text>
       </View>
       <View style={styles.cartActions}>
         {/* <TouchableOpacity

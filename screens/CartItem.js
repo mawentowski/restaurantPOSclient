@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import * as calculateCostUtils from "../utils/calculateCost";
 
 const CartItemScreen = ({ route, navigation }) => {
   const item = route.params;
@@ -17,7 +18,7 @@ const CartItemScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     console.log("count type:", typeof count);
-    console.log("Rounded item cost:", roundedItemCost);
+    console.log("Rounded item cost:", roundedSingleItemPrice);
   });
 
   useEffect(() => {
@@ -39,24 +40,19 @@ const CartItemScreen = ({ route, navigation }) => {
     console.log(cartItemsCtx);
   });
 
-  const roundedItemCost = item.price.toFixed(2);
-
-  const calculateItemsCost = (count, roundedItemCost) => {
-    const itemsCost = count * roundedItemCost;
-    return itemsCost.toFixed(2);
-  };
+  const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
 
   return (
     <View>
       <Text>
-        {item.id}, {item.name}, {item.image}, {roundedItemCost}. The count is:{" "}
-        {count}
+        {item.id}, {item.name}, {item.image}, {roundedSingleItemPrice}. The
+        count is: {count}
       </Text>
       <CounterComponent
         count={count}
         increment={increment}
         decrement={decrement}
-        price={roundedItemCost}
+        price={roundedSingleItemPrice}
       />
       <Button
         title={
@@ -64,7 +60,10 @@ const CartItemScreen = ({ route, navigation }) => {
             ? currentQuantity !== 0
               ? "Remove from basket"
               : "Back to Menu"
-            : `Add to basket - $${calculateItemsCost(count, roundedItemCost)}`
+            : `Add to basket - $${calculateCostUtils.calculateCostByCount(
+                count,
+                roundedSingleItemPrice
+              )}`
         }
         onPress={() => {
           if (count !== currentQuantity) {

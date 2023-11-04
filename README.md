@@ -82,7 +82,9 @@ This is how you pass a component as a argument:
 // component housed in root
 <Appbar.Content title={<BasketSummary />}></Appbar.Content>
 // pass a function in a template literal
-`Add to basket - $${(calculateItemsCost(count))}`
+`Add to basket - $${CalculateCostByCount(count, roundedSingleItemPrice)}`
+// pass function as a prop
+price={roundSingleItemCost()}
 // pass navigation to component
 // note: you dont need to pass to screens because they are wrapped by Nav in App.js
 const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={navigation} />}
@@ -97,7 +99,9 @@ const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={n
 useEffect(() => { console.log("count type:", typeof count);
     console.log("item.price type:", typeof roundedItemCost);
   });
-
+  // pass util functions (traditional exported JS functions) and accessing specific functions
+import * as calculateCostUtils from "../utils/calculateCost";
+const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
 ```
 
 ### Redux
