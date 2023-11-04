@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList } from "react-native";
 import MenuItem from "../components/MenuItem";
-import menuData from "../MenuData";
+import menuData from "../menuData";
 
 const AppetizerScreen = ({ navigation }) => {
   const appetizers = menuData.appetizers;

@@ -72,6 +72,17 @@ This is how you pass a component as a argument:
 <Appbar.Content title={<BasketSummary />}></Appbar.Content>
 ```
 
+### Passing things
+
+```javascript
+// inline function
+<Pressable onPress={() => console.log("Pressed")}/>
+// function call
+<Pressable onPress={pressHandler}/>
+// component housed in root
+<Appbar.Content title={<BasketSummary />}></Appbar.Content>
+```
+
 ### Redux
 
 Old state solution: const [selectedItems, setSelectedItems] = useState([]);
