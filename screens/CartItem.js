@@ -17,7 +17,7 @@ const CartItemScreen = ({ route, navigation }) => {
 
   useEffect(() => {
     console.log("count type:", typeof count);
-    console.log("item.price type:", typeof item.price);
+    console.log("Rounded item cost:", roundedItemCost);
   });
 
   useEffect(() => {
@@ -39,17 +39,24 @@ const CartItemScreen = ({ route, navigation }) => {
     console.log(cartItemsCtx);
   });
 
+  const roundedItemCost = item.price.toFixed(2);
+
+  const calculateItemsCost = (count, roundedItemCost) => {
+    const itemsCost = count * roundedItemCost;
+    return itemsCost.toFixed(2);
+  };
+
   return (
     <View>
       <Text>
-        {item.id}, {item.name}, {item.image}, {item.price}. The count is:{" "}
+        {item.id}, {item.name}, {item.image}, {roundedItemCost}. The count is:{" "}
         {count}
       </Text>
       <CounterComponent
         count={count}
         increment={increment}
         decrement={decrement}
-        price={item.price}
+        price={roundedItemCost}
       />
       <Button
         title={
@@ -57,7 +64,7 @@ const CartItemScreen = ({ route, navigation }) => {
             ? currentQuantity !== 0
               ? "Remove from basket"
               : "Back to Menu"
-            : `Add to basket - $${count * item.price}`
+            : `Add to basket - $${calculateItemsCost(count, roundedItemCost)}`
         }
         onPress={() => {
           if (count !== currentQuantity) {

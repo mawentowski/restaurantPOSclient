@@ -68,11 +68,13 @@ function CartItemsContextProvider({ children }) {
       // Find the corresponding menu item (e.g., appetizer) in menuData by matching the item's ID
       const item = menuData.appetizers.find((appetizer) => appetizer.id === id);
       console.log(
-        `Found item with ID ${id}: ${item.name}, Price: ${item.price}`
+        `Found item with ID ${id}: ${item.name}, Price: ${item.price.toFixed(
+          2
+        )}`
       );
 
       // Calculate the cost of the current item by multiplying its quantity by its price
-      const itemCost = quantity * item.price;
+      const itemCost = quantity * item.price.toFixed(2);
       console.log(`Cost of item with ID ${id}: ${itemCost}`);
 
       // Add the item cost to the running total
@@ -90,10 +92,10 @@ function CartItemsContextProvider({ children }) {
   }
 
   // Function to round a number to a specified number of decimal places
-  function roundToDecimalPlaces(number, decimalPlaces) {
-    const factor = 10 ** decimalPlaces;
-    return Math.round(number * factor) / factor;
-  }
+  // function roundToDecimalPlaces(number, decimalPlaces) {
+  //   const factor = 10 ** decimalPlaces;
+  //   return Math.round(number * factor) / factor;
+  // }
 
   const value = {
     cartItems,

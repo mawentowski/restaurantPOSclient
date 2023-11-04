@@ -81,6 +81,8 @@ This is how you pass a component as a argument:
 <Pressable onPress={pressHandler}/>
 // component housed in root
 <Appbar.Content title={<BasketSummary />}></Appbar.Content>
+// pass a function in a template literal
+`Add to basket - $${(calculateItemsCost(count))}`
 // pass navigation to component
 // note: you dont need to pass to screens because they are wrapped by Nav in App.js
 const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={navigation} />}
@@ -90,6 +92,12 @@ const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={n
 <Pressable onPress={() => { navigation.navigate("CartItem", item) }}/>
 // local images
 <Image style={styles.dot} source={require("../assets/circle-solid.svg")}/>
+// console.logging, passing a string and the variable to display
+// updates when wrapping component state updates
+useEffect(() => { console.log("count type:", typeof count);
+    console.log("item.price type:", typeof roundedItemCost);
+  });
+
 ```
 
 ### Redux
