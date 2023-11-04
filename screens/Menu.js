@@ -15,6 +15,7 @@ import AppetizerScreen from "./Appetizer";
 import MainCourseScreen from "./MainCourse";
 import DessertScreen from "./Dessert";
 import OrderBar from "../components/OrderBar";
+import CourseScreen from "./Course";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import { TouchableOpacity } from "react-native-web";
@@ -74,10 +75,18 @@ const Menu = ({ navigation }) => {
       <View style={{ flex: 1 }}>
         <Tab.Navigator>
           <Tab.Screen
-            name="Appetizer"
-            component={AppetizerScreen}
-            // initialParams={{ selectedItems }}
+            name="Appetizers"
+            component={() => <CourseScreen course="appetizers" />}
           />
+          <Tab.Screen
+            name="Main Courses"
+            component={() => <CourseScreen course="mainCourses" />}
+          />
+          <Tab.Screen
+            name="Desserts"
+            component={() => <CourseScreen course="desserts" />}
+          />
+
           {/* <Tab.Screen name="MainCourse" component={MainCourseScreen} />
           <Tab.Screen name="Dessert" component={DessertScreen} /> */}
         </Tab.Navigator>

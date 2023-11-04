@@ -4,8 +4,8 @@ import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
 
-const CartItemScreen = ({ route, navigation }) => {
-  const item = route.params;
+const CartItemScreen = ({ item, navigation }) => {
+  // const item = route.params;
   const cartItemsCtx = useContext(CartItemsContext);
 
   // Set the initial count based on the item in the cart or default to 1
