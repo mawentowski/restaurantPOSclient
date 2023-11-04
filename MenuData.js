@@ -1,4 +1,5 @@
 // menuData.js
+
 const menuData = {
   appetizers: [
     {

@@ -55,11 +55,11 @@ function CartItemsContextProvider({ children }) {
     console.log("Calculating total cost...");
 
     // Create a variable to store the total cost and initialize it to 0
-    // ME NOTE: its looping through all items in the cart, updating total cost for each item
-    // in the cart, adding it up each time
-    const totalCost = Object.keys(cartItems).reduce((total, id) => {
+    let totalCost = 0;
+
+    // Iterate over the keys (item IDs) in cartItems using reduce
+    Object.keys(cartItems).forEach((id) => {
       console.log(`Processing item with ID: ${id}`);
-      // Use the reduce method to iterate over the keys (item IDs) in cartItems
 
       // Retrieve the quantity of the item from the cartItems object using the current item ID (id)
       const quantity = cartItems[id];
@@ -76,14 +76,23 @@ function CartItemsContextProvider({ children }) {
       console.log(`Cost of item with ID ${id}: ${itemCost}`);
 
       // Add the item cost to the running total
-      return total + itemCost;
-    }, 0);
+      totalCost += itemCost;
+    });
+
+    // Format the total cost with two decimal places (e.g., "5.50")
+    totalCost = totalCost.toFixed(2);
 
     // Log the total cost before returning it
     console.log(`Total Cost: ${totalCost}`);
 
     // Return the totalCost, which is the calculated total cost of all items in the cart
     return totalCost;
+  }
+
+  // Function to round a number to a specified number of decimal places
+  function roundToDecimalPlaces(number, decimalPlaces) {
+    const factor = 10 ** decimalPlaces;
+    return Math.round(number * factor) / factor;
   }
 
   const value = {

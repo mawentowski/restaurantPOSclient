@@ -88,10 +88,8 @@ const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={n
 <Pressable onPress={() => navigation.navigate("Basket")}/>
 // onpress navigation, also passing a variable
 <Pressable onPress={() => { navigation.navigate("CartItem", item) }}/>
-
-
-
-
+// local images
+<Image style={styles.dot} source={require("../assets/circle-solid.svg")}/>
 ```
 
 ### Redux
