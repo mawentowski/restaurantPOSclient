@@ -81,6 +81,17 @@ This is how you pass a component as a argument:
 <Pressable onPress={pressHandler}/>
 // component housed in root
 <Appbar.Content title={<BasketSummary />}></Appbar.Content>
+// pass navigation to component
+// note: you dont need to pass to screens because they are wrapped by Nav in App.js
+const AppetizerScreen = ({ navigation }) => {<MenuItem item={item} navigation={navigation} />}
+// On press simply navigating
+<Pressable onPress={() => navigation.navigate("Basket")}/>
+// onpress navigation, also passing a variable
+<Pressable onPress={() => { navigation.navigate("CartItem", item) }}/>
+
+
+
+
 ```
 
 ### Redux

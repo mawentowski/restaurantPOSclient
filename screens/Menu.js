@@ -37,7 +37,7 @@ const Menu = ({ navigation }) => {
   const RenderAppBar = () => {
     if (itemCount > 0) {
       return (
-        <Pressable onPress={() => console.log("Pressed")}>
+        <Pressable onPress={() => navigation.navigate("Basket")}>
           <Appbar
             style={[
               styles.bottom,

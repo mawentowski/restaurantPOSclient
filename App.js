@@ -6,6 +6,7 @@ import AppetizerScreen from "./screens/Appetizer";
 import MainCourseScreen from "./screens/MainCourse";
 import DessertScreen from "./screens/Dessert";
 import CartItemScreen from "./screens/CartItem";
+import BasketScreen from "./screens/Basket";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import CartItemsContextProvider from "./store/context/CartItemsContext";
@@ -28,6 +29,7 @@ export default function App() {
             <Stack.Screen name="MainCourse" component={MainCourseScreen} />
             <Stack.Screen name="Dessert" component={DessertScreen} />
             <Stack.Screen name="CartItem" component={CartItemScreen} />
+            <Stack.Screen name="Basket" component={BasketScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </CartItemsContextProvider>
