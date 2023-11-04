@@ -36,13 +36,14 @@ const Menu = ({ navigation }) => {
   // MENU > COURSE > MENUITEM
 
   // const [showMakeAnother, setShowMakeAnother] = useState(false);
-  // const handleMenuItemPress = () => {
-  //   if (cartItemQuantity > 0) {
-  //     setShowMakeAnother(true);
-  //   } else {
-  //     navigation.navigate("CartItem", item);
-  //   }
-  // };
+  const handleMenuItemPress = () => {
+    // if (cartItemQuantity > 0) {
+    //   setShowMakeAnother(true);
+    // } else {
+    //   navigation.navigate("CartItem", item);
+    // }
+    console.log("handleMenuItemPress was triggered by the DessertScreen");
+  };
   // useEffect(() => {
   //   console.log(cartItemsCtx);
   //   console.log("The cartitemquanity is: ", cartItemQuantity);
@@ -86,16 +87,26 @@ const Menu = ({ navigation }) => {
       );
     }
   };
+
   return (
     <>
       <View style={{ flex: 1 }}>
         <Tab.Navigator>
           <Tab.Screen
+            name="Dessert"
+            component={CourseScreen}
+            initialParams={{
+              course: "desserts",
+              handleMenuItemPress: handleMenuItemPress,
+            }}
+          />
+          {/* <Tab.Screen
             name="Appetizer"
             component={CourseScreen}
-            initialParams={{ course: "appetizers" }}
-          />
-          <Tab.Screen
+            initialParams={{ course: "appetizers",handleMenuItemPress: handleMenuItemPress }}
+          /> */}
+
+          {/* <Tab.Screen
             name="Main Course"
             component={CourseScreen}
             initialParams={{ course: "mainCourses" }}
@@ -104,7 +115,7 @@ const Menu = ({ navigation }) => {
             name="Dessert"
             component={CourseScreen}
             initialParams={{ course: "desserts" }}
-          />
+          /> */}
         </Tab.Navigator>
         {/* <OrderBar /> */}
 

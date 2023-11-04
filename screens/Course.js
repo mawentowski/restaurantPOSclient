@@ -1,29 +1,30 @@
 import React, { useEffect } from "react";
-import { StyleSheet, FlatList } from "react-native";
+import { StyleSheet, FlatList, Pressable } from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../menuData";
 
 const CourseScreen = ({ navigation, route }) => {
   // const courseData = menuData[course];
-  const { course } = route.params;
+  const { course, handleMenuItemPress } = route.params;
 
-  useEffect(() => {
-    console.log("course:", course);
-    console.log("menuData[course]:", menuData[course]);
-    // console.log("courseData:", courseData);
-  });
+  // useEffect(() => {
+  //   console.log("course:", course);
+  //   console.log("menuData[course]:", menuData[course]);
+  // });
 
   return (
-    <FlatList
-      data={menuData[course]}
-      numColumns={2}
-      contentContainerStyle={styles.cartItemCardsContainer}
-      renderItem={({ item }) => {
-        console.log("item:", item); // Add this line to log the item
-        return <MenuItem item={item} navigation={navigation} />;
-      }}
-      keyExtractor={(item) => item.id}
-    />
+    <Pressable onPress={handleMenuItemPress}>Test</Pressable>
+
+    // <FlatList
+    //   data={menuData[course]}
+    //   numColumns={2}
+    //   contentContainerStyle={styles.cartItemCardsContainer}
+    //   renderItem={({ item }) => {
+    //     console.log("item:", item);
+    //     return <MenuItem item={item} navigation={navigation} />;
+    //   }}
+    //   keyExtractor={(item) => item.id}
+    // />
   );
 };
 
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
 
     flexWrap: "wrap",
     justifyContent: "center",
-    paddingHorizontal: 8, // Add horizontal padding to control spacing at the edges
+    paddingHorizontal: 8,
   },
 });
 
