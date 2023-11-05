@@ -57,16 +57,14 @@ const ItemInfoScreen = ({ route, navigation }) => {
       <Button
         title={
           count === 0
-            ? currentQuantity !== 0
-              ? "Remove from basket"
-              : "Back to Menu"
+            ? "Back to Menu"
             : `Add to basket - $${calculateCostUtils.calculateCostByCount(
                 count,
                 roundedSingleItemPrice
               )}`
         }
         onPress={() => {
-          if (count !== currentQuantity) {
+          if (count > 0 && count !== currentQuantity) {
             // If the count is different, update the cart with the new quantity
             cartItemsCtx.setCartItemQuantity(item.id, count);
             console.log("Quantity updated");

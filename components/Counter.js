@@ -2,19 +2,24 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const CounterComponent = ({ count, increment, decrement, price }) => {
-  const buttonStyle = count === 0 ? styles.greenButton : styles.blueButton;
+  const isCountZero = count === 0;
+  const isCountMaxed = count === 5;
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={decrement} style={styles.button}>
-        <Text>-</Text>
-      </TouchableOpacity>
+      {!isCountZero && (
+        <TouchableOpacity onPress={decrement} style={styles.button}>
+          <Text>-</Text>
+        </TouchableOpacity>
+      )}
       <Text style={styles.count}>{count}</Text>
-      <TouchableOpacity onPress={increment} style={styles.button}>
-        <Text>+</Text>
-      </TouchableOpacity>
-      {/* <Text style={buttonStyle}>
-        {count === 0 ? "Back to Menu" : `Add to basket - $${count * price}`}
+      {!isCountMaxed && (
+        <TouchableOpacity onPress={increment} style={styles.button}>
+          <Text>+</Text>
+        </TouchableOpacity>
+      )}
+      {/* <Text style={styles.buttonStyle}>
+        {isCountZero ? "Back to Menu" : `Add to basket - $${count * price}`}
       </Text> */}
     </View>
   );
@@ -37,11 +42,8 @@ const styles = StyleSheet.create({
   count: {
     fontSize: 18,
   },
-  blueButton: {
+  buttonStyle: {
     color: "blue",
-  },
-  greenButton: {
-    color: "green",
   },
 });
 
