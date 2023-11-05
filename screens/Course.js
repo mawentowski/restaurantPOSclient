@@ -1,5 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, FlatList, Pressable, View } from "react-native";
+import {
+  StyleSheet,
+  FlatList,
+  Pressable,
+  View,
+  SafeAreaView,
+} from "react-native";
 import MenuItem from "../components/MenuItem";
 import menuData from "../menuData";
 
@@ -41,7 +47,7 @@ const CourseScreen = ({ navigation, route }) => {
 
   return (
     // <Pressable onPress={handleMenuItemPress}>Test</Pressable>
-    <View>
+    <View style={{ flex: 1 }}>
       <FlatList
         data={menuData[course]}
         numColumns={2}
