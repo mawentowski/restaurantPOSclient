@@ -58,7 +58,7 @@ const ItemInfoScreen = ({ route, navigation }) => {
         title={
           count === 0
             ? "Back to Menu"
-            : `Add to basket - $${calculateCostUtils.calculateCostByCount(
+            : `Add to order - $${calculateCostUtils.calculateCostByCount(
                 count,
                 roundedSingleItemPrice
               )}`

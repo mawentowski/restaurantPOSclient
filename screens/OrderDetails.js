@@ -3,7 +3,7 @@ import { Card, Avatar, Button, Text } from "react-native-paper";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
-export default function BasketScreen() {
+export default function OrderDetailsScreen() {
   // const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
   const cartItemsCtx = useContext(CartItemsContext);
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);

@@ -41,7 +41,7 @@ const Menu = ({ navigation }) => {
   const RenderAppBar = () => {
     if (itemCount > 0) {
       return (
-        <Pressable onPress={() => navigation.navigate("Basket")}>
+        <Pressable onPress={() => navigation.navigate("OrderDetails")}>
           <Appbar
             style={[
               styles.bottom,
@@ -52,7 +52,7 @@ const Menu = ({ navigation }) => {
             ]}
             safeAreaInsets={{ bottom }}
           >
-            <Appbar.Content title={<BasketSummary />}></Appbar.Content>
+            <Appbar.Content title={<OrderSummary />}></Appbar.Content>
 
             {/* <Appbar.Action icon="archive" onPress={() => {}} />
           <Appbar.Action icon="email" onPress={() => {}} />
@@ -115,13 +115,13 @@ const Menu = ({ navigation }) => {
   );
 };
 
-const BasketSummary = () => {
+const OrderSummary = () => {
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.getTotalItems();
   const totalCost = cartItemsCtx.getTotalCost();
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>
-      <Text>Basket</Text>
+      <Text>Order</Text>
 
       <Image
         style={styles.dot}
