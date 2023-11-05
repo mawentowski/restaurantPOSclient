@@ -121,6 +121,8 @@ const CartItemScreen = ({ route, navigation }) => {
   component={CourseScreen}
   initialParams={{}}
 />
+// Pass more than one class:
+<View style={[styles.modalView, styles.modalHeader]}>
 ```
 
 ### Redux

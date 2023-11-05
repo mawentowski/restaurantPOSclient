@@ -4,7 +4,7 @@ import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
 
-const CartItemScreen = ({ route, navigation }) => {
+const ItemInfoScreen = ({ route, navigation }) => {
   const { item } = route.params;
   const cartItemsCtx = useContext(CartItemsContext);
 
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CartItemScreen;
+export default ItemInfoScreen;

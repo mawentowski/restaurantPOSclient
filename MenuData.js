@@ -4,7 +4,7 @@ const menuData = {
   appetizers: [
     {
       id: "appetizer-1",
-      name: "Appetizer X",
+      name: "Margies Famous Match Green Tea",
       description: "Description for Appetizer 1",
       image: require("./assets/icon.png"),
       price: 5.5,

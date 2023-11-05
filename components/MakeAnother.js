@@ -1,8 +1,13 @@
 import * as React from "react";
 import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
+import { useContext } from "react";
+import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
-const MakeAnother = ({ visible, onClose }) => {
+const MakeAnother = ({ visible, onClose, item }) => {
+  const cartItemsCtx = useContext(CartItemsContext);
+  const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
+  // const totalCost = cartItemsCtx.getTotalCost();
   return (
     <View>
       <Portal>
@@ -11,7 +16,23 @@ const MakeAnother = ({ visible, onClose }) => {
           onDismiss={onClose}
           contentContainerStyle={styles.containerStyle}
         >
-          <Text>Example Modal. Click outside this area to dismiss.</Text>
+          <View style={[styles.modalView, styles.modalHeader]}>
+            <Text>{item.name}</Text>
+            <Text style={styles.basePriceContainer}>{item.price}</Text>
+          </View>
+          <View style={[styles.modalView, styles.modalBody]}>
+            <Image style={styles.cartItemImage} source={item.image} />
+
+            <View style={styles.itemOrderInfo}>
+              <Text>{item.name}</Text>
+            </View>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>{cartItemQuantity}</Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>124</Text>
+            </View>
+          </View>
         </Modal>
       </Portal>
     </View>
@@ -21,10 +42,37 @@ const MakeAnother = ({ visible, onClose }) => {
 const styles = StyleSheet.create({
   containerStyle: {
     backgroundColor: "white",
-    padding: 20,
     elevation: 5,
     marginTop: "auto",
+    paddingLeft: 0,
+    paddingRight: 0,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    alignItems: "center",
   },
+
+  modalView: {
+    flexDirection: "row",
+    padding: 16,
+    // paddingRight: 16,
+  },
+  modalHeader: {
+    borderBottomColor: "#F2F2F2",
+    borderBottomWidth: 8,
+  },
+  modalBody: {
+    justifyContent: "space-between",
+  },
+  basePriceContainer: {
+    marginLeft: "auto",
+  },
+  cartItemImage: {
+    width: "10%",
+    aspectRatio: 1,
+  },
+  itemOrderInfo: {},
+  cartItemQuantityContainer: {},
+  cartItemTotalCost: {},
 });
 
 export default MakeAnother;

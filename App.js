@@ -2,7 +2,7 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { registerRootComponent } from "expo";
 import HomeScreen from "./screens/Home";
 import MenuScreen from "./screens/Menu";
-import CartItemScreen from "./screens/CartItem";
+import ItemInfoScreen from "./screens/ItemInfo";
 import BasketScreen from "./screens/Basket";
 import CourseScreen from "./screens/Course";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,7 +23,7 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen name="Menu" component={MenuScreen} />
-            <Stack.Screen name="CartItem" component={CartItemScreen} />
+            <Stack.Screen name="ItemInfo" component={ItemInfoScreen} />
             <Stack.Screen name="Basket" component={BasketScreen} />
             {/* <Stack.Screen name="Course" component={CourseScreen} /> */}
 

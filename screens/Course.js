@@ -15,9 +15,11 @@ const CourseScreen = ({ navigation, route }) => {
   // });
 
   const [showMakeAnother, setShowMakeAnother] = useState(false);
+  const [currentItem, setCurrentItem] = useState({});
 
   const handleMenuItemPress = (item, cartItemQuantity) => {
     console.log("the item.id is:", item.id);
+    setCurrentItem(item);
     console.log(
       "The cartItemQuantity registered by handMenuItemPress is:",
       cartItemQuantity
@@ -28,7 +30,7 @@ const CourseScreen = ({ navigation, route }) => {
       console.log("The cartItemQuantity > 0");
     } else {
       console.log("The cartItemQuantity = 0");
-      navigation.navigate("CartItem", { item: item });
+      navigation.navigate("ItemInfo", { item: item });
     }
     console.log("The handleMenuItemPress was pressed");
   };
@@ -58,6 +60,7 @@ const CourseScreen = ({ navigation, route }) => {
           // it will be true
           visible={showMakeAnother}
           onClose={() => setShowMakeAnother(false)}
+          item={currentItem}
         />
       )}
     </View>
