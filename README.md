@@ -122,7 +122,12 @@ const CartItemScreen = ({ route, navigation }) => {
   initialParams={{}}
 />
 // Pass more than one class:
-<View style={[styles.modalView, styles.modalHeader]}>
+<View style={[styles.modalView, styles.modalHeader]}/>
+// Views nroamlly require this, for example, if they wrap flatlist
+<View style={{ flex: 1 }}/>
+// When the only funxtion in a component is default, you import it like this:
+import PlaceOrderBar from "../components/PlaceOrderBar";
+
 ```
 
 ### Redux

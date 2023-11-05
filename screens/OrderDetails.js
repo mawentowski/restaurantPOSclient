@@ -1,15 +1,16 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { Card, Avatar, Button, Text } from "react-native-paper";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import PlaceOrderBar from "../components/PlaceOrderBar";
 
-export default function OrderDetailsScreen() {
+export default function OrderDetailsScreen({ navigation }) {
   // const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
   const cartItemsCtx = useContext(CartItemsContext);
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
 
   return (
-    <View style={styles.orderDetailsContainer}>
+    <ScrollView style={styles.orderDetailsContainer}>
       <View style={[styles.orderSummaryContainer]}>
         <View style={[styles.container]}>
           <Text>Order Summary</Text>
@@ -44,15 +45,130 @@ export default function OrderDetailsScreen() {
               <Text>$124</Text>
             </View>
           </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
+          <View style={[styles.container]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
+          </View>
         </View>
       </View>
-    </View>
+
+      <PlaceOrderBar navigation={navigation}></PlaceOrderBar>
+    </ScrollView>
   );
 }
 const styles = StyleSheet.create({
   orderDetailsContainer: {
     backgroundColor: "#FFFFFF",
     marginTop: 2,
+    flex: 1,
   },
   orderSummaryContainer: {
     marginTop: 2,
