@@ -10,37 +10,39 @@ export default function BasketScreen() {
 
   return (
     <View style={styles.orderDetailsContainer}>
-      <View style={[styles.modalView, styles.orderSummaryContainer]}>
-        <Text>Order Summary</Text>
-        <Text style={styles.basePriceContainer}>Add Items</Text>
-      </View>
-      <View style={[styles.modalBody]}>
-        <View style={[styles.modalView]}>
-          <View style={styles.cartItemQuantityContainer}>
-            <Text>2{/* {cartItemQuantity} */}</Text>
-          </View>
-          <View style={styles.itemOrderInfo}>
-            <Text>
-              Mama Nena's Famous Green Tea
-              {/* {item.name} */}
-            </Text>
-          </View>
-          <View style={styles.cartItemTotalCost}>
-            <Text>$124</Text>
-          </View>
+      <View style={[styles.orderSummaryContainer]}>
+        <View style={[styles.orderSummaryHeader]}>
+          <Text>Order Summary</Text>
+          <Text style={styles.totalCartItemCostContainer}>Add Items</Text>
         </View>
-        <View style={[styles.modalView]}>
-          <View style={styles.cartItemQuantityContainer}>
-            <Text>2{/* {cartItemQuantity} */}</Text>
+        <View styles={styles.cartItemsList}>
+          <View style={[styles.cartItemsDetails]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
           </View>
-          <View style={styles.itemOrderInfo}>
-            <Text>
-              Mama Nena's Famous Green Tea
-              {/* {item.name} */}
-            </Text>
-          </View>
-          <View style={styles.cartItemTotalCost}>
-            <Text>$124</Text>
+          <View style={[styles.cartItemsDetails]}>
+            <View style={styles.cartItemQuantityContainer}>
+              <Text>2{/* {cartItemQuantity} */}</Text>
+            </View>
+            <View style={styles.cartItemOrderInfo}>
+              <Text>
+                Mama Nena's Famous Green Tea
+                {/* {item.name} */}
+              </Text>
+            </View>
+            <View style={styles.cartItemTotalCost}>
+              <Text>$124</Text>
+            </View>
           </View>
         </View>
       </View>
@@ -64,27 +66,37 @@ const styles = StyleSheet.create({
   //   marginTop: 2,
   //   width: "100%",
   // },
-  modalView: {
+
+  orderSummaryHeader: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    // paddingLeft: 2,
+    // paddingRight: 2,
+    padding: 16,
+  },
+  cartItemsDetails: {
+    // flexDirection: "row",
     flexDirection: "row",
     padding: 16,
+    justifyContent: "space-between",
     // paddingRight: 16,
   },
   orderSummaryContainer: {
     marginTop: 2,
     width: "100%",
   },
-  modalBody: {
+  cartItemsList: {
     justifyContent: "space-between",
     alignItems: "center",
   },
-  basePriceContainer: {
+  totalCartItemCostContainer: {
     marginLeft: "auto",
   },
   cartItemImage: {
     width: "10%",
     aspectRatio: 1,
   },
-  itemOrderInfo: {
+  cartItemOrderInfo: {
     maxWidth: 180,
   },
   cartItemQuantityContainer: {
