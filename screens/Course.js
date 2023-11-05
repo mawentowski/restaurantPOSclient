@@ -35,6 +35,10 @@ const CourseScreen = ({ navigation, route }) => {
     console.log("The handleMenuItemPress was pressed");
   };
 
+  const dismissMakeAnotherModal = () => {
+    setShowMakeAnother(false);
+  };
+
   return (
     // <Pressable onPress={handleMenuItemPress}>Test</Pressable>
     <View>
@@ -62,6 +66,7 @@ const CourseScreen = ({ navigation, route }) => {
           onClose={() => setShowMakeAnother(false)}
           item={currentItem}
           navigation={navigation}
+          dismissMakeAnotherModal={dismissMakeAnotherModal}
         />
       )}
     </View>

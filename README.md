@@ -170,3 +170,8 @@ The trigger for the modal displaying is clicking a MenuItem.
 So, the MenuItem needs to inherit the handleMenuItemPress function that exists in Menu. So thats MENU > COURSE > MENU ITEM. It may or may not need to inherit the state.
 
 You'll need to pass whatever needs to be passed from Menu to courses. This means defining what needs to be defined as part of the initailParams object.
+
+## Todo
+
+make max size of item order 5
+make the minus icon go away if there is it zero

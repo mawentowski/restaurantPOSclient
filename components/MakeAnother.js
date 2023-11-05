@@ -4,7 +4,13 @@ import { View, StyleSheet, Image } from "react-native";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
-const MakeAnother = ({ visible, onClose, item, navigation }) => {
+const MakeAnother = ({
+  visible,
+  onClose,
+  item,
+  navigation,
+  dismissMakeAnotherModal,
+}) => {
   const cartItemsCtx = useContext(CartItemsContext);
   const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
   // const totalCost = cartItemsCtx.getTotalCost();
@@ -38,7 +44,8 @@ const MakeAnother = ({ visible, onClose, item, navigation }) => {
               mode="contained"
               style={styles.makeAnotherBtn}
               onPress={() => {
-                navigation.navigate("Dessert");
+                dismissMakeAnotherModal();
+                navigation.navigate("ItemInfo", { item: item });
               }}
             >
               Make Another
