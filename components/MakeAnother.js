@@ -4,7 +4,7 @@ import { View, StyleSheet, Image } from "react-native";
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 
-const MakeAnother = ({ visible, onClose, item }) => {
+const MakeAnother = ({ visible, onClose, item, navigation }) => {
   const cartItemsCtx = useContext(CartItemsContext);
   const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
   // const totalCost = cartItemsCtx.getTotalCost();
@@ -33,6 +33,17 @@ const MakeAnother = ({ visible, onClose, item }) => {
               <Text>124</Text>
             </View>
           </View>
+          <View style={[styles.modalView, styles.makeAnotherBtnContainer]}>
+            <Button
+              mode="contained"
+              style={styles.makeAnotherBtn}
+              onPress={() => {
+                navigation.navigate("Dessert");
+              }}
+            >
+              Make Another
+            </Button>
+          </View>
         </Modal>
       </Portal>
     </View>
@@ -48,7 +59,6 @@ const styles = StyleSheet.create({
     paddingRight: 0,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
-    alignItems: "center",
   },
 
   modalView: {
@@ -62,6 +72,7 @@ const styles = StyleSheet.create({
   },
   modalBody: {
     justifyContent: "space-between",
+    alignItems: "center",
   },
   basePriceContainer: {
     marginLeft: "auto",
@@ -70,9 +81,23 @@ const styles = StyleSheet.create({
     width: "10%",
     aspectRatio: 1,
   },
-  itemOrderInfo: {},
-  cartItemQuantityContainer: {},
+  itemOrderInfo: {
+    maxWidth: 180,
+  },
+  cartItemQuantityContainer: {
+    width: 20,
+    height: 20,
+    borderWidth: 1,
+    borderColor: "#333",
+    borderRadius: "50%",
+    alignItems: "center",
+  },
   cartItemTotalCost: {},
+
+  makeAnotherBtnContainer: {},
+  makeAnotherBtn: {
+    flex: 1,
+  },
 });
 
 export default MakeAnother;

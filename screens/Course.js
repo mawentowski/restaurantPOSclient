@@ -61,6 +61,7 @@ const CourseScreen = ({ navigation, route }) => {
           visible={showMakeAnother}
           onClose={() => setShowMakeAnother(false)}
           item={currentItem}
+          navigation={navigation}
         />
       )}
     </View>
