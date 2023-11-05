@@ -16,7 +16,7 @@ import CourseScreen from "./Course";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 // import { TouchableOpacity } from "react-native-web";
-import MakeAnother from "../components/MakeAnother";
+// import MakeAnother from "../components/MakeAnother";
 
 const Tab = createMaterialTopTabNavigator();
 const BOTTOM_APPBAR_HEIGHT = 80;
@@ -35,25 +35,6 @@ const Menu = ({ navigation }) => {
 
   // You'll have to pass these as part of initial params to the course, thenm down to the Menu item
   // MENU > COURSE > MENUITEM
-
-  const [showMakeAnother, setShowMakeAnother] = useState(false);
-
-  const handleMenuItemPress = (item, cartItemQuantity) => {
-    console.log("the item.id is:", item.id);
-    console.log(
-      "The cartItemQuantity registered by handMenuItemPress is:",
-      cartItemQuantity
-    );
-
-    if (cartItemQuantity > 0) {
-      setShowMakeAnother(true);
-      console.log("The cartItemQuantity > 0");
-    } else {
-      console.log("The cartItemQuantity = 0");
-      navigation.navigate("CartItem", { item: item });
-    }
-    console.log("The handleMenuItemPress was pressed");
-  };
 
   // See the return statement for the condition
 
@@ -110,7 +91,6 @@ const Menu = ({ navigation }) => {
             component={CourseScreen}
             initialParams={{
               course: "appetizers",
-              handleMenuItemPress: handleMenuItemPress,
             }}
           />
 
@@ -130,13 +110,6 @@ const Menu = ({ navigation }) => {
         <RenderAppBar />
 
         {/* {showMakeAnother && <MakeAnother />} */}
-        {showMakeAnother && (
-          <MakeAnother
-            // it will be true
-            visible={showMakeAnother}
-            onClose={() => setShowMakeAnother(false)}
-          />
-        )}
       </View>
     </>
   );
