@@ -1,4 +1,4 @@
-import { Button, View, Text } from "react-native";
+import { View } from "react-native";
 import WelcomeCard from "../components/WelcomeCard";
 
 export default function HomeScreen({ navigation }) {

@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, TouchableOpacity, StyleSheet } from "react-native";
+import { Text } from "react-native-paper";
 
 const CounterComponent = ({ count, increment, decrement, price }) => {
   const isCountZero = count === 0;

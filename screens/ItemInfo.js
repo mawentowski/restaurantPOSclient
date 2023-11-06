@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
+import { Appbar, FAB, useTheme, Text, Button } from "react-native-paper";
 import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
@@ -55,14 +56,15 @@ const ItemInfoScreen = ({ route, navigation }) => {
         price={roundedSingleItemPrice}
       />
       <Button
-        title={
-          count === 0
-            ? "Back to Menu"
-            : `Add to order - $${calculateCostUtils.calculateCostByCount(
-                count,
-                roundedSingleItemPrice
-              )}`
-        }
+        mode="contained"
+        // title={
+        //   count === 0
+        //     ? "Back to Menu"
+        //     : `Add to order - $${calculateCostUtils.calculateCostByCount(
+        //         count,
+        //         roundedSingleItemPrice
+        //       )}`
+        // }
         onPress={() => {
           if (count > 0 && count !== currentQuantity) {
             // If the count is different, update the cart with the new quantity
@@ -82,7 +84,14 @@ const ItemInfoScreen = ({ route, navigation }) => {
           count === 0 && currentQuantity !== 0 && styles.redButton,
           count === 0 && currentQuantity === 0 && styles.blueButton,
         ]}
-      />
+      >
+        {count === 0
+          ? "Back to Menu"
+          : `Add to order - $${calculateCostUtils.calculateCostByCount(
+              count,
+              roundedSingleItemPrice
+            )}`}
+      </Button>
     </View>
   );
 };
@@ -97,9 +106,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   button: {
-    padding: 10,
-    borderWidth: 1,
-    borderColor: "gray",
+    // padding: 10,
+    // borderWidth: 1,
+    // borderColor: "gray",
   },
   count: {
     fontSize: 18,

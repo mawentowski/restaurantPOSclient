@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Image,
-  Text,
   StyleSheet,
   TouchableOpacity,
   Pressable,
 } from "react-native";
+import { Text } from "react-native-paper";
+
 import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";

@@ -1,8 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Appbar, FAB, useTheme } from "react-native-paper";
+import { Appbar, FAB, useTheme, Text } from "react-native-paper";
 import {
   View,
-  Text,
   Button,
   StyleSheet,
   Image,

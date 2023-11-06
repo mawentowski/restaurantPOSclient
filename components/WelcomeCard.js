@@ -69,12 +69,17 @@ export default function WelcomeCard({ navigation }) {
           keyboardType="numeric"
           maxLength={2}
         />
-
-        <Card.Actions style={styles.cardActions}>
-          <Button mode="contained" onPress={handleSubmit}>
+        <View styles={styles.buttonContainer}>
+          <Button
+            mode="contained"
+            onPress={handleSubmit}
+            styles={styles.OkButton}
+          >
             Ok
           </Button>
-        </Card.Actions>
+        </View>
+
+        {/* <Card.Actions style={styles.cardActions}></Card.Actions> */}
       </Card>
 
       <Portal>
@@ -98,8 +103,14 @@ const styles = StyleSheet.create({
   welcomeCardContainer: {
     textAlign: "center",
   },
-  cardActions: {
+  buttonContainer: {
     justifyContent: "center",
+    alignItems: "center",
+    padding: 10,
+    // width: "50%",
+  },
+  OkButton: {
+    margin: 10,
   },
   tip: {
     textAlign: "center",
