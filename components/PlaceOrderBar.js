@@ -13,6 +13,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 // import OrderBar from "../components/OrderBar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import OrderPlaced from "../components/OrderPlaced";
 
 const PlaceOrderBar = ({ navigation }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;
@@ -58,6 +59,11 @@ const PlaceOrderBarContent = () => {
   // const cartItemsCtx = useContext(CartItemsContext);
   // const itemCount = cartItemsCtx.getTotalItems();
   // const totalCost = cartItemsCtx.getTotalCost();
+  const [visible, setVisible] = useState(false); // State to control the visibility of the modal
+
+  const showModal = () => setVisible(true); // Function to show the modal
+  // const hideModal = () => setVisible(false);
+
   return (
     <View style={[styles.makeAnotherBtnContainer]}>
       <View style={styles.modalView}>
@@ -68,14 +74,21 @@ const PlaceOrderBarContent = () => {
       <Button
         mode="contained"
         style={styles.makeAnotherBtn}
-        onPress={() => {
-          console.log("pressed");
-          //   dismissMakeAnotherModal();
-          //   navigation.navigate("ItemInfo", { item: item });
-        }}
+        onPress={showModal}
       >
         Place Order
       </Button>
+
+      {visible && (
+        <OrderPlaced
+          // it will be true
+          // visible={true}
+          // onClose={() => setShowMakeAnother(false)}
+          // item={currentItem}
+          navigation={navigation}
+          // dismissMakeAnotherModal={dismissMakeAnotherModal}
+        />
+      )}
     </View>
   );
 };

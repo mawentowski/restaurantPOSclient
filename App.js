@@ -16,7 +16,7 @@ export default function App() {
     <PaperProvider>
       <CartItemsContextProvider>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Menu">
+          <Stack.Navigator initialRouteName="Home">
             <Stack.Screen
               name="Home"
               component={HomeScreen}

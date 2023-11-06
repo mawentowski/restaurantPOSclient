@@ -127,6 +127,7 @@ const CartItemScreen = ({ route, navigation }) => {
 <View style={{ flex: 1 }}/>
 // When the only funxtion in a component is default, you import it like this:
 import PlaceOrderBar from "../components/PlaceOrderBar";
+// You can set timers using UseEffect
 
 ```
 
@@ -180,3 +181,19 @@ You'll need to pass whatever needs to be passed from Menu to courses. This means
 
 make max size of item order 5
 make the minus icon go away if there is it zero
+
+## Features
+
+Timer with status on progress of order
+Change order? It calls the waiter to help.
+Maybe call waiter button
+
+Servers have their own app that can edit orders after theyve been submitted.
+
+The server updates the system when they deliver it so the app closes out and allows you to enter the table again.
+
+## Table input screen
+
+When they type a letter in table field, show helper text
+
+https://callstack.github.io/react-native-paper/docs/components/HelperText/
