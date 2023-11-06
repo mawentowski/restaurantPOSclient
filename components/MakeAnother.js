@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
   makeAnotherBtnContainer: {},
   makeAnotherBtn: {
     flex: 1,
-    borderRadius: 5,
+    // borderRadius: 5,
   },
 });
 
