@@ -88,7 +88,11 @@ const styles = StyleSheet.create({
     // paddingHorizontal: 8,
     // flex: 1,
     // width: "100%",
+    backgroundColor: "rgb(255, 255, 255)",
   },
+  // menuItemStyle: {
+  //   backgroundColor: "rgba(255, 255, 255, 1)",
+  // },
 });
 
 export default CourseScreen;

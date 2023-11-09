@@ -74,7 +74,7 @@ const MenuItem = ({ handleMenuItemPress, item }) => {
 const styles = StyleSheet.create({
   cartItem: {
     // flex: 1,
-    backgroundColor: "rgba(255, 255, 255, 1)",
+    // backgroundColor: "rgba(255, 255, 255, 1)",
     // marginBottom: 16,
     // paddingHorizontal: 8,
     // borderRadius: 8,
@@ -94,12 +94,14 @@ const styles = StyleSheet.create({
     borderRadius: 18,
     // maxWidth: "50%",
     // maxHeight: "50%",
+    // backgroundColor: "rgba(255, 255, 255, 1)",
   },
   cardItemInfoContainer: {
     padding: 8,
     marginLeft: "7.5%",
     marginRight: "7.5%",
     width: "85%",
+    // backgroundColor: "rgba(255, 255, 255, 1)",
     // maxWidth: "50%",
     // maxHeight: "50%",
   },
