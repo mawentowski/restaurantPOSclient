@@ -107,10 +107,11 @@ const styles = StyleSheet.create({
   },
   itemName: {
     fontSize: 16,
-    fontWeight: "bold",
+    // fontWeight: "bold",
   },
   itemPrice: {
     fontSize: 14,
+    fontWeight: "bold",
   },
   cartActions: {
     flexDirection: "row",
