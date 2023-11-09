@@ -83,6 +83,8 @@ const styles = StyleSheet.create({
     flex: 1,
     // width: "100%",
     alignItems: "flex-start",
+    maxWidth: "50%",
+    maxHeight: "50%",
   },
   carouselImage: {
     marginLeft: "7.5%",
