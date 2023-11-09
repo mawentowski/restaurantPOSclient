@@ -73,19 +73,33 @@ const MenuItem = ({ handleMenuItemPress, item }) => {
 
 const styles = StyleSheet.create({
   cartItem: {
-    flex: 1, // Each item takes up 50% of the screen width
-    backgroundColor: "lightgray",
-    marginBottom: 16, // Add margin for spacing between rows
-    paddingHorizontal: 8, // Add horizontal padding to control spacing at the edges
-    borderRadius: 8,
-    overflow: "hidden",
+    // flex: 1,
+    backgroundColor: "rgba(255, 255, 255, 1)",
+    // marginBottom: 16,
+    // paddingHorizontal: 8,
+    // borderRadius: 8,
+    // overflow: "hidden",
+    // width: "100%",
+    flex: 1,
+    // width: "100%",
+    alignItems: "flex-start",
   },
   carouselImage: {
-    width: "100%",
+    marginLeft: "7.5%",
+    marginRight: "7.5%",
+    width: "85%",
     aspectRatio: 1,
+    borderRadius: 18,
+    // maxWidth: "50%",
+    // maxHeight: "50%",
   },
   cardItemInfoContainer: {
     padding: 8,
+    marginLeft: "7.5%",
+    marginRight: "7.5%",
+    width: "85%",
+    // maxWidth: "50%",
+    // maxHeight: "50%",
   },
   itemName: {
     fontSize: 16,
@@ -114,3 +128,10 @@ const styles = StyleSheet.create({
 });
 
 export default MenuItem;
+
+// 7.5
+// first time 35%
+// 7.5
+// 7.5
+// second item 35%
+// 7.5

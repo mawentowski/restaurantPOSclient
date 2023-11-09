@@ -82,11 +82,12 @@ const CourseScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   cartItemCardsContainer: {
-    flexDirection: "row",
-
-    flexWrap: "wrap",
-    justifyContent: "center",
-    paddingHorizontal: 8,
+    // flexDirection: "row",
+    // flexWrap: "wrap",
+    // justifyContent: "center",
+    // paddingHorizontal: 8,
+    // flex: 1,
+    // width: "100%",
   },
 });
 

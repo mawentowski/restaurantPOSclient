@@ -197,3 +197,11 @@ The server updates the system when they deliver it so the app closes out and all
 When they type a letter in table field, show helper text
 
 https://callstack.github.io/react-native-paper/docs/components/HelperText/
+
+## Orderdetails
+
+<!-- The modal can have a counter -->
+
+## Menu
+
+Create context for table number

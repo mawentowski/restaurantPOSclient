@@ -73,18 +73,23 @@ const Menu = ({ navigation }) => {
     }
   };
 
+  // const _goBack = () => console.log("Went back");
+
+  const _handleSearch = () => console.log("Searching");
+
+  const _handleMore = () => console.log("Shown more");
+
   return (
     <>
+      <Appbar.Header style={{ backgroundColor: theme.colors.elevation.level2 }}>
+        {/* <Appbar.BackAction onPress={_goBack} /> */}
+        <Appbar.Content title="Title" />
+        {/* <Appbar.Action icon="magnify" onPress={_handleSearch} />
+        <Appbar.Action icon="dots-vertical" onPress={_handleMore} /> */}
+      </Appbar.Header>
+
       <View style={{ flex: 1 }}>
         <Tab.Navigator>
-          {/* <Tab.Screen
-            name="Dessert"
-            component={CourseScreen}
-            initialParams={{
-              course: "desserts",
-              handleMenuItemPress: handleMenuItemPress,
-            }}
-          /> */}
           <Tab.Screen
             name="Appetizer"
             component={CourseScreen}
@@ -93,7 +98,7 @@ const Menu = ({ navigation }) => {
             }}
           />
 
-          {/* <Tab.Screen
+          <Tab.Screen
             name="Main Course"
             component={CourseScreen}
             initialParams={{ course: "mainCourses" }}
@@ -102,7 +107,7 @@ const Menu = ({ navigation }) => {
             name="Dessert"
             component={CourseScreen}
             initialParams={{ course: "desserts" }}
-          /> */}
+          />
         </Tab.Navigator>
         {/* <OrderBar /> */}
 
