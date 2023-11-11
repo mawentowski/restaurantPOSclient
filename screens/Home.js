@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import WelcomeCard from "../components/WelcomeCard";
+import WelcomeCard from "../components/HomeScreen/WelcomeCard";
 
 export default function HomeScreen({ navigation }) {
   return (

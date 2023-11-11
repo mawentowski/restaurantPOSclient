@@ -7,10 +7,10 @@ import {
   SafeAreaView,
 } from "react-native";
 // import { } from "react-native-paper";
-import MenuItem from "../components/MenuItem";
+import MenuItem from "../components/CourseScreen/MenuItem";
 import menuData from "../menuData";
 
-import MakeAnother from "../components/MakeAnother";
+import MakeAnother from "../components/CourseScreen/MakeAnother";
 
 const CourseScreen = ({ navigation, route }) => {
   // const courseData = menuData[course];
@@ -37,7 +37,7 @@ const CourseScreen = ({ navigation, route }) => {
       console.log("The cartItemQuantity > 0");
     } else {
       console.log("The cartItemQuantity = 0");
-      navigation.navigate("ItemInfo", { item: item });
+      navigation.navigate("Item", { item: item });
     }
     console.log("The handleMenuItemPress was pressed");
   };

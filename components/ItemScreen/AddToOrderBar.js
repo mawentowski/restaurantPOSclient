@@ -15,9 +15,9 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 // import OrderPlaced from "../components/OrderPlaced";
 // import CounterComponent from "../components/Counter";
-import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
 // import * as calculateCostUtils from "../utils/calculateCost";
-import * as calculateCostUtils from "../utils/calculateCost";
+import * as calculateCostUtils from "../../utils/calculateCost";
 
 const AddToOrderBar = ({ navigation, item, count }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;

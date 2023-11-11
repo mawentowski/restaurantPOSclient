@@ -9,7 +9,7 @@ import {
 } from "react-native-paper";
 import { View, StyleSheet, Image } from "react-native";
 import { useContext } from "react";
-import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
 
 const OrderPlaced = ({
   //   visible,

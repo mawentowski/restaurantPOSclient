@@ -2,7 +2,7 @@ import * as React from "react";
 import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
 import { View, StyleSheet, Image } from "react-native";
 import { useContext } from "react";
-import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
 
 const MakeAnother = ({
   visible,
@@ -45,7 +45,7 @@ const MakeAnother = ({
               style={styles.makeAnotherBtn}
               onPress={() => {
                 dismissMakeAnotherModal();
-                navigation.navigate("ItemInfo", { item: item });
+                navigation.navigate("Item", { item: item });
               }}
             >
               Make Another

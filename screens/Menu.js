@@ -40,7 +40,7 @@ const Menu = ({ navigation }) => {
   const RenderAppBar = () => {
     if (itemCount > 0) {
       return (
-        <Pressable onPress={() => navigation.navigate("OrderDetails")}>
+        <Pressable onPress={() => navigation.navigate("Order")}>
           <Appbar
             style={[
               styles.bottom,

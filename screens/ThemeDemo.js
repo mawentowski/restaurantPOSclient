@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import PlaceOrderBar from "../components/PlaceOrderBar";
 
-export default function OrderDetailsScreen({ navigation }) {
+export default function OrderScreen({ navigation }) {
   // const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
   const cartItemsCtx = useContext(CartItemsContext);
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);

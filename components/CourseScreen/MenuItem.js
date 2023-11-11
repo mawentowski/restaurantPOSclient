@@ -9,8 +9,8 @@ import {
 import { Text } from "react-native-paper";
 
 import { useContext } from "react";
-import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
-import * as calculateCostUtils from "../utils/calculateCost";
+import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
+import * as calculateCostUtils from "../../utils/calculateCost";
 
 const MenuItem = ({ handleMenuItemPress, item }) => {
   const { id, name, image, price } = item;

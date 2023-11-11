@@ -8,13 +8,13 @@ import {
   Button,
   Portal,
 } from "react-native-paper";
-import CounterComponent from "../components/Counter";
+import CounterComponent from "../components/ItemScreen/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
-import AddToOrderBar from "../components/AddToOrderBar";
+import AddToOrderBar from "../components/ItemScreen/AddToOrderBar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-const ItemInfoScreen = ({ route, navigation }) => {
+const ItemScreen = ({ route, navigation }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;
   const { bottom } = useSafeAreaInsets();
 
@@ -236,4 +236,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ItemInfoScreen;
+export default ItemScreen;

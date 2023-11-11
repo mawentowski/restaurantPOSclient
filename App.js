@@ -2,8 +2,8 @@ import { Provider as PaperProvider } from "react-native-paper";
 import { registerRootComponent } from "expo";
 import HomeScreen from "./screens/Home";
 import MenuScreen from "./screens/Menu";
-import ItemInfoScreen from "./screens/ItemInfo";
-import OrderDetailsScreen from "./screens/OrderDetails";
+import ItemScreen from "./screens/Item";
+import OrderScreen from "./screens/Order";
 import CourseScreen from "./screens/Course";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -28,11 +28,11 @@ export default function App() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
-              name="ItemInfo"
-              component={ItemInfoScreen}
+              name="Item"
+              component={ItemScreen}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="OrderDetails" component={OrderDetailsScreen} />
+            <Stack.Screen name="Order" component={OrderScreen} />
             {/* <Stack.Screen name="Course" component={CourseScreen} /> */}
 
             <Stack.Screen
