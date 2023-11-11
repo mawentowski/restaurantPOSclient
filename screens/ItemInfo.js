@@ -49,7 +49,7 @@ const ItemInfoScreen = ({ route, navigation }) => {
       <Appbar.Header style={{ backgroundColor: theme.colors.elevation.level2 }}>
         <Appbar.Content title={<CartItemHeroImage item={item} />} />
       </Appbar.Header>
-      <View>
+      <ScrollView style={styles.cartItemInfoContainer}>
         <Text>
           {item.id}, {item.name}, {item.image}, {roundedSingleItemPrice}. The
           count is: {count}
@@ -60,6 +60,57 @@ const ItemInfoScreen = ({ route, navigation }) => {
           decrement={decrement}
           price={roundedSingleItemPrice}
         />
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+
         <Button
           mode="contained"
           // title={
@@ -97,7 +148,7 @@ const ItemInfoScreen = ({ route, navigation }) => {
                 roundedSingleItemPrice
               )}`}
         </Button>
-      </View>
+      </ScrollView>
     </>
   );
 };
@@ -115,11 +166,53 @@ const styles = StyleSheet.create({
     borderColor: "gray",
     paddingHorizontal: 10,
   },
+
+  // imageContainer: {
+
+  // }
+
+  // cartItemInfoContainer: {
+  //   marginTop: "5%",
+  //   marginLeft: "7.5%",
+  //   marginRight: "7.5%",
+  // },
+
+  itemImage: {
+    // padding: 8,
+    // marginLeft: "7.5%",
+    // marginRight: "7.5%",
+    // width: "85%",
+    // width: "85%",
+    aspectRatio: 1,
+    // borderRadius: 18,
+  },
+
+  infoHeader: {
+    flexDirection: "row",
+  },
+  itemPrice: {
+    marginLeft: "auto",
+  },
+
+  btnContainer: {
+    marginTop: "auto",
+  },
   button: {
     // padding: 10,
     // borderWidth: 1,
     // borderColor: "gray",
+    marginTop: "auto",
   },
+
+  cartItemDescription: {
+    paddingTop: "3%",
+    paddingBottom: "3%",
+  },
+
+  counter: {
+    // paddingTop: "3%",
+  },
+
   count: {
     fontSize: 18,
   },
@@ -132,16 +225,6 @@ const styles = StyleSheet.create({
 
   redButton: {
     color: "red",
-  },
-
-  itemImage: {
-    // padding: 8,
-    // marginLeft: "7.5%",
-    // marginRight: "7.5%",
-    // width: "85%",
-    // width: "85%",
-    aspectRatio: 1,
-    // borderRadius: 18,
   },
 });
 
