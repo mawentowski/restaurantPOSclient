@@ -70,7 +70,10 @@ const styles = StyleSheet.create({
 
   modalView: {
     flexDirection: "row",
-    padding: 16,
+    paddingTop: 16,
+    // paddingLeft: '3.5%',
+    // paddingRight: '3.5%',
+    padding: "3.5%",
     // paddingRight: 16,
   },
   modalHeader: {
@@ -96,7 +99,6 @@ const styles = StyleSheet.create({
     height: 20,
     borderWidth: 1,
     borderColor: "#333",
-    borderRadius: "50%",
     alignItems: "center",
   },
   cartItemTotalCost: {},
@@ -104,7 +106,7 @@ const styles = StyleSheet.create({
   makeAnotherBtnContainer: {},
   makeAnotherBtn: {
     flex: 1,
-    // borderRadius: 5,
+    borderRadius: 5,
   },
 });
 

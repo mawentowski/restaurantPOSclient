@@ -51,7 +51,9 @@ const Menu = ({ navigation }) => {
             ]}
             safeAreaInsets={{ bottom }}
           >
-            <Appbar.Content title={<OrderSummary />}></Appbar.Content>
+            <Appbar.Content
+              title={<OrderSummary style={styles.orderSummaryContainer} />}
+            ></Appbar.Content>
 
             {/* <Appbar.Action icon="archive" onPress={() => {}} />
           <Appbar.Action icon="email" onPress={() => {}} />
@@ -144,7 +146,17 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
+    paddingLeft: 0,
+    marginLeft: 0,
+    paddingRight: 0,
   },
+
+  orderSummaryContainer: {
+    marginLeft: 0,
+    paddingLeft: 0,
+    backgroundColor: "red",
+  },
+
   fab: {
     position: "absolute",
     right: 16,
