@@ -44,6 +44,42 @@ const menuData = {
       image: require("./assets/icon.png"),
       price: 5.5,
     },
+    {
+      id: "appetizer-7",
+      name: "Appetizer 7",
+      description: "Description for Appetizer 6",
+      image: require("./assets/icon.png"),
+      price: 5.5,
+    },
+    {
+      id: "appetizer-8",
+      name: "Appetizer 8",
+      description: "Description for Appetizer 6",
+      image: require("./assets/icon.png"),
+      price: 5.5,
+    },
+    {
+      id: "appetizer-9",
+      name: "Appetizer 9",
+      description: "Description for Appetizer 6",
+      image: require("./assets/icon.png"),
+      price: 5.5,
+    },
+    {
+      id: "appetizer-10",
+      name: "Appetizer 10",
+      description: "Description for Appetizer 6",
+      image: require("./assets/icon.png"),
+      price: 5.5,
+    },
+    {
+      id: "appetizer-11",
+      name: "Appetizer 11",
+      description: "Description for Appetizer 6",
+      image: require("./assets/icon.png"),
+      price: 5.5,
+    },
+
     // Add more appetizers here
   ],
   mainCourses: [

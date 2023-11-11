@@ -5,8 +5,10 @@ import {
   Pressable,
   View,
   SafeAreaView,
+  ScrollView,
 } from "react-native";
-// import { } from "react-native-paper";
+
+import { Text } from "react-native-paper";
 import MenuItem from "../components/CourseScreen/MenuItem";
 import menuData from "../menuData";
 
@@ -49,22 +51,24 @@ const CourseScreen = ({ navigation, route }) => {
   return (
     // <Pressable onPress={handleMenuItemPress}>Test</Pressable>
     <View style={{ flex: 1, backgroundColor: "rgb(255, 255, 255)" }}>
-      <FlatList
-        data={menuData[course]}
-        numColumns={2}
-        contentContainerStyle={styles.cartItemCardsContainer}
-        renderItem={({ item }) => {
-          console.log("item:", item);
-          return (
-            <MenuItem
-              item={item}
-              navigation={navigation}
-              handleMenuItemPress={handleMenuItemPress}
-            />
-          );
-        }}
-        keyExtractor={(item) => item.id}
-      />
+      <SafeAreaView style={{ flex: 1 }}>
+        <FlatList
+          data={menuData[course]}
+          numColumns={2}
+          contentContainerStyle={styles.cartItemCardsContainer}
+          renderItem={({ item }) => {
+            console.log("test:", item);
+            return (
+              <MenuItem
+                item={item}
+                navigation={navigation}
+                handleMenuItemPress={handleMenuItemPress}
+              />
+            );
+          }}
+          keyExtractor={(item) => item.id}
+        />
+      </SafeAreaView>
 
       {showMakeAnother && (
         <MakeAnother
@@ -82,17 +86,11 @@ const CourseScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   cartItemCardsContainer: {
-    // flexDirection: "row",
-    // flexWrap: "wrap",
-    // justifyContent: "center",
-    // paddingHorizontal: 8,
-    // flex: 1,
-    // width: "100%",
-    // backgroundColor: "rgb(255, 255, 255)",
+    paddingTop: "5.5%",
+    paddingLeft: "5.5%",
+    // Need to set this to height of bottom app bar + 10 or so
+    paddingBottom: 90,
   },
-  // menuItemStyle: {
-  //   backgroundColor: "rgba(255, 255, 255, 1)",
-  // },
 });
 
 export default CourseScreen;
