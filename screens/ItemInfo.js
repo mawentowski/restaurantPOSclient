@@ -140,15 +140,35 @@ const ItemInfoScreen = ({ route, navigation }) => {
 };
 
 const CartItemHeroImage = (item) => {
-  return (
-    <>
-      <Button title="test">Test button</Button>
-      {/* <Image style={styles.itemImage} source={item.image} /> */}
-    </>
-  );
+  return <Image style={styles.dot} source={require("../assets/favicon.png")} />;
 };
+{
+  /* <Button title="test">Test button</Button> */
+}
+{
+  /* <Image style={styles.itemImage} source={item.image} /> */
+}
 
 const styles = StyleSheet.create({
+  itemImage: {
+    padding: 8,
+    marginLeft: "7.5%",
+    marginRight: "7.5%",
+    width: "85%",
+    width: "85%",
+    aspectRatio: 1,
+    // borderRadius: 18,
+  },
+
+  dot: {
+    width: 20,
+    height: 20,
+    alignSelf: "center",
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop: 2,
+  },
+
   container: {
     flexDirection: "row",
     alignItems: "center",
@@ -167,16 +187,6 @@ const styles = StyleSheet.create({
   //   marginLeft: "7.5%",
   //   marginRight: "7.5%",
   // },
-
-  itemImage: {
-    // padding: 8,
-    // marginLeft: "7.5%",
-    // marginRight: "7.5%",
-    // width: "85%",
-    // width: "85%",
-    aspectRatio: 1,
-    // borderRadius: 18,
-  },
 
   infoHeader: {
     flexDirection: "row",
