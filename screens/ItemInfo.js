@@ -66,66 +66,19 @@ const ItemInfoScreen = ({ route, navigation }) => {
         ></Appbar.Content>
       </Appbar.Header>
       <ScrollView style={styles.cartItemInfoContainer}>
-        <Text>
-          {item.id}, {item.name}, {item.image}, {roundedSingleItemPrice}. The
-          count is: {count}
-        </Text>
+        <View style={styles.infoHeader}>
+          <Text variant="titleMedium">{item.name}</Text>
+          <Text style={styles.itemPrice} variant="titleMedium">
+            ${roundedSingleItemPrice}
+          </Text>
+        </View>
+        <Text style={styles.cartItemDescription}>{item.description}</Text>
         <CounterComponent
           count={count}
           increment={increment}
           decrement={decrement}
           price={roundedSingleItemPrice}
         />
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
       </ScrollView>
 
       <Portal>
