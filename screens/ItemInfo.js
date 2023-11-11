@@ -76,44 +76,6 @@ const ItemInfoScreen = ({ route, navigation }) => {
           decrement={decrement}
           price={roundedSingleItemPrice}
         />
-
-        <Button
-          mode="contained"
-          // title={
-          //   count === 0
-          //     ? "Back to Menu"
-          //     : `Add to order - $${calculateCostUtils.calculateCostByCount(
-          //         count,
-          //         roundedSingleItemPrice
-          //       )}`
-          // }
-          onPress={() => {
-            if (count > 0 && count !== currentQuantity) {
-              // If the count is different, update the cart with the new quantity
-              cartItemsCtx.setCartItemQuantity(item.id, count);
-              console.log("Quantity updated");
-            }
-            if (count === 0 && currentQuantity !== 0) {
-              cartItemsCtx.removeCartItem(item.id);
-            }
-
-            navigation.navigate("Menu");
-          }}
-          // cant get styling to work
-          style={[
-            styles.button,
-            count !== 0 && styles.greenButton,
-            count === 0 && currentQuantity !== 0 && styles.redButton,
-            count === 0 && currentQuantity === 0 && styles.blueButton,
-          ]}
-        >
-          {count === 0
-            ? "Back to Menu"
-            : `Add to order - $${calculateCostUtils.calculateCostByCount(
-                count,
-                roundedSingleItemPrice
-              )}`}
-        </Button>
         <Text>
           Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
           test Scroll test Scroll test Scroll test Scroll test Scroll test
