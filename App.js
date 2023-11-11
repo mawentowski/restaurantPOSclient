@@ -27,7 +27,11 @@ export default function App() {
               component={MenuScreen}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="ItemInfo" component={ItemInfoScreen} />
+            <Stack.Screen
+              name="ItemInfo"
+              component={ItemInfoScreen}
+              options={{ headerShown: false }}
+            />
             <Stack.Screen name="OrderDetails" component={OrderDetailsScreen} />
             {/* <Stack.Screen name="Course" component={CourseScreen} /> */}
 

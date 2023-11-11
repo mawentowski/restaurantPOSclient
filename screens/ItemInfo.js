@@ -4,6 +4,7 @@ import { Appbar, FAB, useTheme, Text, Button } from "react-native-paper";
 import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
+import AddToOrderBar from "../components/AddToOrderBar";
 
 const ItemInfoScreen = ({ route, navigation }) => {
   const theme = useTheme();
@@ -49,7 +50,9 @@ const ItemInfoScreen = ({ route, navigation }) => {
   return (
     <>
       <Appbar.Header style={{ backgroundColor: theme.colors.elevation.level2 }}>
-        <Appbar.Content title={<CartItemHeroImage item={item} />} />
+        <Appbar.Content
+          title={<CartItemHeroImage item={item} />}
+        ></Appbar.Content>
       </Appbar.Header>
       <ScrollView style={styles.cartItemInfoContainer}>
         <Text>
@@ -62,56 +65,6 @@ const ItemInfoScreen = ({ route, navigation }) => {
           decrement={decrement}
           price={roundedSingleItemPrice}
         />
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
-        <Text>
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test Scroll test
-          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
-          test Scroll test Scroll test Scroll test Scroll test{" "}
-        </Text>
 
         <Button
           mode="contained"
@@ -150,13 +103,74 @@ const ItemInfoScreen = ({ route, navigation }) => {
                 roundedSingleItemPrice
               )}`}
         </Button>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
+        <Text>
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test Scroll test
+          Scroll test Scroll test Scroll test Scroll test Scroll test Scroll
+          test Scroll test Scroll test Scroll test Scroll test{" "}
+        </Text>
       </ScrollView>
+
+      <AddToOrderBar
+        navigation={navigation}
+        item={item}
+        count={count}
+      ></AddToOrderBar>
     </>
   );
 };
 
 const CartItemHeroImage = (item) => {
-  return <Image style={styles.itemImage} source={item.image} />;
+  return (
+    <>
+      <Button title="test">Test button</Button>
+      {/* <Image style={styles.itemImage} source={item.image} /> */}
+    </>
+  );
 };
 
 const styles = StyleSheet.create({
