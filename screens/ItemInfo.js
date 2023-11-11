@@ -1,12 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Image } from "react-native";
-import { Appbar, FAB, useTheme, Text, Button } from "react-native-paper";
+import {
+  Appbar,
+  FAB,
+  useTheme,
+  Text,
+  Button,
+  Portal,
+} from "react-native-paper";
 import CounterComponent from "../components/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
 import * as calculateCostUtils from "../utils/calculateCost";
 import AddToOrderBar from "../components/AddToOrderBar";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 const ItemInfoScreen = ({ route, navigation }) => {
+  const BOTTOM_APPBAR_HEIGHT = 110;
+  const { bottom } = useSafeAreaInsets();
+
   const theme = useTheme();
   const { item } = route.params;
   const cartItemsCtx = useContext(CartItemsContext);
@@ -155,11 +166,60 @@ const ItemInfoScreen = ({ route, navigation }) => {
         </Text>
       </ScrollView>
 
-      <AddToOrderBar
-        navigation={navigation}
-        item={item}
-        count={count}
-      ></AddToOrderBar>
+      <Portal>
+        <Appbar
+          style={[
+            styles.bottom,
+            {
+              height: BOTTOM_APPBAR_HEIGHT + bottom,
+              backgroundColor: theme.colors.elevation.level2,
+            },
+          ]}
+          safeAreaInsets={{ bottom }}
+        >
+          <Appbar.Content
+            title={
+              <Button
+                mode="contained"
+                // title={
+                //   count === 0
+                //     ? "Back to Menu"
+                //     : `Add to order - $${calculateCostUtils.calculateCostByCount(
+                //         count,
+                //         roundedSingleItemPrice
+                //       )}`
+                // }
+                onPress={() => {
+                  if (count > 0 && count !== currentQuantity) {
+                    // If the count is different, update the cart with the new quantity
+                    cartItemsCtx.setCartItemQuantity(item.id, count);
+                    console.log("Quantity updated");
+                  }
+                  if (count === 0 && currentQuantity !== 0) {
+                    cartItemsCtx.removeCartItem(item.id);
+                  }
+
+                  navigation.navigate("Menu");
+                }}
+                // cant get styling to work
+                style={[
+                  styles.button,
+                  count !== 0 && styles.greenButton,
+                  count === 0 && currentQuantity !== 0 && styles.redButton,
+                  count === 0 && currentQuantity === 0 && styles.blueButton,
+                ]}
+              >
+                {count === 0
+                  ? "Back to Menu"
+                  : `Add to order - $${calculateCostUtils.calculateCostByCount(
+                      count,
+                      roundedSingleItemPrice
+                    )}`}
+              </Button>
+            }
+          ></Appbar.Content>
+        </Appbar>
+      </Portal>
     </>
   );
 };
@@ -241,6 +301,13 @@ const styles = StyleSheet.create({
 
   redButton: {
     color: "red",
+  },
+  bottom: {
+    // backgroundColor: "aquamarine",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    bottom: 0,
   },
 });
 
