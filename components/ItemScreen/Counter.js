@@ -16,41 +16,46 @@ const CounterComponent = ({ count, increment, decrement, price }) => {
 
   return (
     <View style={styles.container}>
-      {!isCountZero && (
-        <TouchableOpacity
-          onPress={decrement}
-          style={[styles.counterIconContainer]}
-        >
-          <Image
-            source={require("../../assets/minus-solid.svg")}
+      <View style={styles.relativeContainer}>
+        {!isCountZero && (
+          <TouchableOpacity
+            onPress={decrement}
+            style={[styles.counterIconContainer, styles.absolutePositionedLeft]}
+          >
+            <Image
+              source={require("../../assets/minus-solid.svg")}
+              style={[
+                styles.counterIcon,
+                {
+                  borderColor: theme.colors.elevation.level2,
+                },
+              ]}
+            />
+          </TouchableOpacity>
+        )}
+        <Text style={styles.itemCountContainer} variant="titleMedium">
+          {count}
+        </Text>
+        {!isCountMaxed && (
+          <TouchableOpacity
+            onPress={increment}
             style={[
-              styles.counterIcon,
-              {
-                borderColor: theme.colors.elevation.level2,
-              },
+              styles.counterIconContainer,
+              styles.absolutePositionedRight,
             ]}
-          />
-        </TouchableOpacity>
-      )}
-      <Text style={styles.itemCountContainer} variant="titleMedium">
-        {count}
-      </Text>
-      {!isCountMaxed && (
-        <TouchableOpacity
-          onPress={increment}
-          style={[styles.counterIconContainer]}
-        >
-          <Image
-            source={require("../../assets/plus-solid.svg")}
-            style={[
-              styles.counterIcon,
-              {
-                borderColor: theme.colors.elevation.level2,
-              },
-            ]}
-          />
-        </TouchableOpacity>
-      )}
+          >
+            <Image
+              source={require("../../assets/plus-solid.svg")}
+              style={[
+                styles.counterIcon,
+                {
+                  borderColor: theme.colors.elevation.level2,
+                },
+              ]}
+            />
+          </TouchableOpacity>
+        )}
+      </View>
     </View>
   );
 };
@@ -60,8 +65,26 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     margin: "auto",
-    paddingVer: "10%",
+    paddingVertical: "10%",
   },
+  relativeContainer: {
+    // position: "relative",
+  },
+
+  absolutePositionedLeft: {
+    position: "absolute",
+    // top: 50,
+    top: "-25%",
+    right: 20,
+  },
+
+  absolutePositionedRight: {
+    position: "absolute",
+    // top: 50,
+    top: "-25%",
+    left: 20,
+  },
+
   counterIconContainer: {
     padding: 10,
     borderWidth: 1,
