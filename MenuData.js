@@ -6,7 +6,7 @@ const menuData = {
       id: "appetizer-1",
       name: "appetizer-1",
       description: "Description for Appetizer 1",
-      image: require("./assets/icon.png"),
+      image: require("./assets/rigatoni.jpg"),
       price: 5.5,
     },
     {

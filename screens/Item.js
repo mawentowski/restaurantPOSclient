@@ -38,8 +38,16 @@ const ItemScreen = ({ route, navigation }) => {
 
   return (
     <>
-      <Appbar.Header style={{ backgroundColor: theme.colors.elevation.level2 }}>
+      <Appbar.Header
+        style={{
+          backgroundColor: theme.colors.elevation.level2,
+          height: 140,
+          paddingLeft: 0,
+          // marginLeft: 0,
+        }}
+      >
         <Appbar.Content
+          style={{ paddingLeft: 0, marginLeft: 0, alignItems: "center" }}
           title={<CartItemHeroImage item={item} />}
         ></Appbar.Content>
       </Appbar.Header>
@@ -104,13 +112,14 @@ const ItemScreen = ({ route, navigation }) => {
   );
 };
 
-const CartItemHeroImage = (item) => {
-  return (
-    <Image style={styles.itemImage} source={require("../assets/favicon.png")} />
-  );
+const CartItemHeroImage = ({ item }) => {
+  return <Image style={styles.itemImage} source={item.image} />;
 };
 
 const styles = StyleSheet.create({
+  appBarHeader: {
+    paddingLeft: 0,
+  },
   cartItemInfoContainer: {
     paddingTop: "5%",
     paddingLeft: "3.5%",
@@ -151,7 +160,7 @@ const styles = StyleSheet.create({
   },
 
   itemImage: {
-    width: "10%",
+    height: "300%",
     aspectRatio: 1,
   },
 });
