@@ -16,88 +16,96 @@ const CounterComponent = ({ count, increment, decrement, price }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.relativeContainer}>
-        {!isCountZero && (
-          <TouchableOpacity
-            onPress={decrement}
-            style={[styles.counterIconContainer, styles.absolutePositionedLeft]}
-          >
-            <Image
-              source={require("../../assets/minus-solid.svg")}
-              style={[
-                styles.counterIcon,
-                {
-                  borderColor: theme.colors.elevation.level2,
-                },
-              ]}
-            />
-          </TouchableOpacity>
-        )}
-        <Text style={styles.itemCountContainer} variant="titleMedium">
-          {count}
-        </Text>
-        {!isCountMaxed && (
-          <TouchableOpacity
-            onPress={increment}
+      {!isCountZero && (
+        <TouchableOpacity
+          onPress={decrement}
+          style={[styles.counterIconContainer, styles.absolutePositionedLeft]}
+        >
+          <Button styles={styles.counterIcon} icon="minus-thick" />
+
+          {/* <Image
+            source={require("../../assets/minus-thick.svg")}
             style={[
-              styles.counterIconContainer,
-              styles.absolutePositionedRight,
+              styles.counterIcon,
+              {
+                borderColor: theme.colors.elevation.level2,
+              },
             ]}
-          >
-            <Image
-              source={require("../../assets/plus-solid.svg")}
-              style={[
-                styles.counterIcon,
-                {
-                  borderColor: theme.colors.elevation.level2,
-                },
-              ]}
-            />
-          </TouchableOpacity>
-        )}
-      </View>
+          /> */}
+        </TouchableOpacity>
+      )}
+      <Text style={styles.itemCountContainer} variant="titleMedium">
+        {count}
+      </Text>
+      {!isCountMaxed && (
+        <TouchableOpacity
+          onPress={increment}
+          style={[styles.counterIconContainer, styles.absolutePositionedRight]}
+        >
+          <Button icon="plus-thick" />
+          {/* <Image
+            source={require("../../assets/plus-thick.svg")}
+            style={[
+              styles.counterIcon,
+              {
+                borderColor: theme.colors.elevation.level2,
+              },
+            ]}
+          /> */}
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    // flexDirection: "row",
     alignItems: "center",
-    margin: "auto",
+    justifyContent: "center",
+    // margin: "auto",
     paddingVertical: "10%",
   },
   relativeContainer: {
     // position: "relative",
+    // alignItems: "center",
+    // flexDirection: "row",
+    // justifyContent: "center",
+    // margin: "auto",
   },
 
   absolutePositionedLeft: {
     position: "absolute",
-    // top: 50,
-    top: "-25%",
-    right: 20,
+    // top: "-25%",
+    left: 120,
   },
 
   absolutePositionedRight: {
     position: "absolute",
-    // top: 50,
-    top: "-25%",
-    left: 20,
+    // top: "-25%",
+    right: 120,
   },
 
   counterIconContainer: {
-    padding: 10,
+    // padding: 0,
+    // margin: 0,
     borderWidth: 1,
     borderRadius: 5,
     borderColor: "rgba(0, 0, 0, 0.1)",
+    width: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingLeft: 12,
   },
+
   counterIcon: {
-    width: 15,
-    height: 15,
+    // margin: 0,
+    // padding: 0,
   },
+
   itemCountContainer: {
     fontSize: 18,
-    paddingHorizontal: "10%",
+    // paddingHorizontal: "10%",
   },
 });
 
