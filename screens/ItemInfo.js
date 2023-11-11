@@ -11,7 +11,9 @@ const ItemInfoScreen = ({ route, navigation }) => {
   const cartItemsCtx = useContext(CartItemsContext);
 
   // Set the initial count based on the item in the cart or default to 1
-  const initialCount = cartItemsCtx.getCartItemQuantity(item.id) || 1;
+  const initialCount = 1;
+
+  // const initialCount = cartItemsCtx.getCartItemQuantity(item.id) || 1;
 
   const [count, setCount] = useState(initialCount);
 
@@ -36,7 +38,7 @@ const ItemInfoScreen = ({ route, navigation }) => {
     setCount(count > 0 ? count - 1 : 0);
   };
 
-  const buttonStyle = count === 0 ? styles.greenButton : styles.blueButton;
+  // const buttonStyle = count === 0 ? styles.greenButton : styles.blueButton;
 
   useEffect(() => {
     console.log(cartItemsCtx);
