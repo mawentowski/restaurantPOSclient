@@ -5,6 +5,8 @@ import CounterComponent from "../components/ItemScreen/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext";
 import * as calculateCostUtils from "../utils/calculateCost";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+// import { ExpandImage } from "../components/ItemScreen/ExpandImage";
+import ExpandImage from "../components/ItemScreen/ExpandImage";
 
 const ItemScreen = ({ route, navigation }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;
@@ -36,6 +38,17 @@ const ItemScreen = ({ route, navigation }) => {
 
   const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
 
+  const [showExpandImage, setExpandImage] = useState(false);
+  // const [currentItem, setCurrentItem] = useState({});
+
+  const handleImagePress = () => {
+    setExpandImage(true);
+  };
+
+  const dismissExpandedImage = () => {
+    setExpandImage(false);
+  };
+
   return (
     <>
       <Appbar.Header
@@ -48,7 +61,13 @@ const ItemScreen = ({ route, navigation }) => {
       >
         <Appbar.Content
           style={{ paddingLeft: 0, marginLeft: 0, alignItems: "center" }}
-          title={<CartItemHeroImage item={item} navigation={navigation} />}
+          title={
+            <CartItemHeroImage
+              item={item}
+              navigation={navigation}
+              handleImagePress={handleImagePress}
+            />
+          }
         ></Appbar.Content>
       </Appbar.Header>
       <ScrollView style={styles.cartItemInfoContainer}>
@@ -108,18 +127,24 @@ const ItemScreen = ({ route, navigation }) => {
           ></Appbar.Content>
         </Appbar>
       </Portal>
+
+      {showExpandImage && (
+        <ExpandImage
+          // it will be true
+          visible={true}
+          onClose={() => setExpandImage(false)}
+          item={item}
+          navigation={navigation}
+          dismissExpandedImage={dismissExpandedImage}
+        />
+      )}
     </>
   );
 };
 
-const CartItemHeroImage = ({ item, navigation }) => {
+const CartItemHeroImage = ({ item, handleImagePress }) => {
   return (
-    <Pressable
-      style={styles.imgContainer}
-      onPress={() => {
-        navigation.navigate("Home");
-      }}
-    >
+    <Pressable style={styles.imgContainer} onPress={handleImagePress}>
       <Image style={styles.itemImage} source={item.image} />
     </Pressable>
   );
