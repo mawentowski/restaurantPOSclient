@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, ScrollView, Image } from "react-native";
+import { View, StyleSheet, ScrollView, Image, Pressable } from "react-native";
 import { Appbar, useTheme, Text, Button, Portal } from "react-native-paper";
 import CounterComponent from "../components/ItemScreen/Counter";
 import { CartItemsContext } from "../store/context/CartItemsContext";
@@ -48,7 +48,7 @@ const ItemScreen = ({ route, navigation }) => {
       >
         <Appbar.Content
           style={{ paddingLeft: 0, marginLeft: 0, alignItems: "center" }}
-          title={<CartItemHeroImage item={item} />}
+          title={<CartItemHeroImage item={item} navigation={navigation} />}
         ></Appbar.Content>
       </Appbar.Header>
       <ScrollView style={styles.cartItemInfoContainer}>
@@ -112,8 +112,17 @@ const ItemScreen = ({ route, navigation }) => {
   );
 };
 
-const CartItemHeroImage = ({ item }) => {
-  return <Image style={styles.itemImage} source={item.image} />;
+const CartItemHeroImage = ({ item, navigation }) => {
+  return (
+    <Pressable
+      style={styles.imgContainer}
+      onPress={() => {
+        navigation.navigate("Home");
+      }}
+    >
+      <Image style={styles.itemImage} source={item.image} />
+    </Pressable>
+  );
 };
 
 const styles = StyleSheet.create({
@@ -159,8 +168,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
 
+  imgContainer: {
+    justifyContent: "center",
+  },
+
   itemImage: {
-    height: "300%",
+    // width: "100%",
+    height: "200%",
+    // resizeMode: "cover",
     aspectRatio: 1,
   },
 });
