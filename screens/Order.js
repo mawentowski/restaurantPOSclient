@@ -11,6 +11,7 @@ export default function OrderScreen({ navigation }) {
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
 
   const cartItems = cartItemsCtx.cartItems;
+  const totalCost = cartItemsCtx.getTotalCost();
   // Looks like:
   // {"appetizer-1": 1, "appetizer-2": 1};
 
@@ -57,6 +58,12 @@ export default function OrderScreen({ navigation }) {
           {cartItemsArray.map((item, index) => (
             <ItemRow key={index} item={item} />
           ))}
+        </View>
+        <View style={styles.orderSummaryContainer}>
+          <View style={[styles.container]}>
+            <Text>Subtotal</Text>
+            <Text style={styles.totalCartItemCostContainer}>{totalCost}</Text>
+          </View>
         </View>
 
         {/* <View styles={styles.container}>
