@@ -20,8 +20,12 @@ const PlaceOrderBar = ({ navigation }) => {
   const MEDIUM_FAB_HEIGHT = 56;
   const { bottom } = useSafeAreaInsets();
   const theme = useTheme();
-
+  const cartItemsCtx = useContext(CartItemsContext);
+  const totalCost = cartItemsCtx.getTotalCost();
   //   <Pressable onPress={() => navigation.navigate("OrderDetails")}>
+  useEffect(() => {
+    console.log("totalCost typeof", typeof totalCost);
+  });
   return (
     <Portal>
       <Appbar
@@ -34,7 +38,9 @@ const PlaceOrderBar = ({ navigation }) => {
         ]}
         safeAreaInsets={{ bottom }}
       >
-        <Appbar.Content title={<PlaceOrderBarContent />}></Appbar.Content>
+        <Appbar.Content
+          title={<PlaceOrderBarContent totalCost={totalCost} />}
+        ></Appbar.Content>
 
         {/* <Appbar.Action icon="archive" onPress={() => {}} />
         <Appbar.Action icon="email" onPress={() => {}} />
@@ -55,7 +61,7 @@ const PlaceOrderBar = ({ navigation }) => {
   );
 };
 
-const PlaceOrderBarContent = () => {
+const PlaceOrderBarContent = ({ totalCost }) => {
   // const cartItemsCtx = useContext(CartItemsContext);
   // const itemCount = cartItemsCtx.getTotalItems();
   // const totalCost = cartItemsCtx.getTotalCost();
@@ -63,12 +69,15 @@ const PlaceOrderBarContent = () => {
 
   const showModal = () => setVisible(true); // Function to show the modal
   // const hideModal = () => setVisible(false);
+  useEffect(() => {
+    console.log("totalCost typeof", typeof totalCost);
+  });
 
   return (
     <View style={[styles.makeAnotherBtnContainer]}>
       <View style={styles.modalView}>
         <Text>Total</Text>
-        <Text style={styles.totalPrice}>$239</Text>
+        <Text style={styles.totalPrice}>${totalCost}</Text>
       </View>
 
       <Button

@@ -215,3 +215,10 @@ The make another isnt adding the new items to total, its updating, which is the 
 The order flatlist isn't dynamic.
 
 The picture zoom-in doesn't work...
+
+```javascript
+const random = {
+  "appetizer-1": 1,
+  "appetizer-2": 1,
+};
+```
