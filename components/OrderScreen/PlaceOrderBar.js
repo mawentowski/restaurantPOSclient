@@ -39,7 +39,12 @@ const PlaceOrderBar = ({ navigation }) => {
         safeAreaInsets={{ bottom }}
       >
         <Appbar.Content
-          title={<PlaceOrderBarContent totalCost={totalCost} />}
+          title={
+            <PlaceOrderBarContent
+              totalCost={totalCost}
+              navigation={navigation}
+            />
+          }
         ></Appbar.Content>
 
         {/* <Appbar.Action icon="archive" onPress={() => {}} />
@@ -61,7 +66,7 @@ const PlaceOrderBar = ({ navigation }) => {
   );
 };
 
-const PlaceOrderBarContent = ({ totalCost }) => {
+const PlaceOrderBarContent = ({ totalCost, navigation }) => {
   // const cartItemsCtx = useContext(CartItemsContext);
   // const itemCount = cartItemsCtx.getTotalItems();
   // const totalCost = cartItemsCtx.getTotalCost();
@@ -76,17 +81,14 @@ const PlaceOrderBarContent = ({ totalCost }) => {
   return (
     <View style={[styles.makeAnotherBtnContainer]}>
       <View style={styles.modalView}>
-        <Text>Total</Text>
-        <Text style={styles.totalPrice}>${totalCost}</Text>
+        <Button
+          mode="contained"
+          style={styles.makeAnotherBtn}
+          onPress={showModal}
+        >
+          Place Order
+        </Button>
       </View>
-
-      <Button
-        mode="contained"
-        style={styles.makeAnotherBtn}
-        onPress={showModal}
-      >
-        Place Order
-      </Button>
 
       {visible && (
         <OrderPlaced
