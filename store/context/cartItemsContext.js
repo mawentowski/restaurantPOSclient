@@ -9,10 +9,15 @@ export const CartItemsContext = createContext({
   getCartItemQuantity: (id) => 0,
   getTotalItems: () => 0,
   getTotalCost: () => 0,
+  getCartItemsList: () => {},
 });
 
 function CartItemsContextProvider({ children }) {
   const [cartItems, setCartItems] = useState({});
+
+  function getCartItemsList() {
+    return cartItems;
+  }
 
   function addCartItem(id) {
     setCartItems((currentCartItems) => {
@@ -105,6 +110,7 @@ function CartItemsContextProvider({ children }) {
     getCartItemQuantity,
     getTotalItems,
     getTotalCost,
+    getCartItemsList,
   };
 
   return (
