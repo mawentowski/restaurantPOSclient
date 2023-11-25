@@ -205,3 +205,13 @@ https://callstack.github.io/react-native-paper/docs/components/HelperText/
 ## Menu
 
 Create context for table number
+
+## new updates
+
+The make another isnt adding the new items to total, its updating, which is the behavior we want went they click the update button in the Make another modal.
+
+The bottom menu bar isn't responsive to touch.
+
+The order flatlist isn't dynamic.
+
+The picture zoom-in doesn't work...

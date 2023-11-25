@@ -40,22 +40,25 @@ const Menu = ({ navigation }) => {
   const RenderAppBar = () => {
     if (itemCount > 0) {
       return (
-        <Pressable onPress={() => navigation.navigate("Order")}>
-          <Appbar
-            style={[
-              styles.bottom,
-              {
-                height: BOTTOM_APPBAR_HEIGHT + bottom,
-                backgroundColor: theme.colors.elevation.level2,
-              },
-            ]}
-            safeAreaInsets={{ bottom }}
-          >
-            <Appbar.Content
-              title={<OrderSummary style={styles.orderSummaryContainer} />}
-            ></Appbar.Content>
+        <Appbar
+          style={[
+            styles.bottom,
+            {
+              height: BOTTOM_APPBAR_HEIGHT + bottom,
+              backgroundColor: theme.colors.elevation.level2,
+            },
+          ]}
+          safeAreaInsets={{ bottom }}
+        >
+          <Appbar.Content
+            title={
+              <Pressable onPress={() => navigation.navigate("Order")}>
+                <OrderSummary style={styles.orderSummaryContainer} />
+              </Pressable>
+            }
+          ></Appbar.Content>
 
-            {/* <Appbar.Action icon="archive" onPress={() => {}} />
+          {/* <Appbar.Action icon="archive" onPress={() => {}} />
           <Appbar.Action icon="email" onPress={() => {}} />
           <Appbar.Action icon="label" onPress={() => {}} />
           <Appbar.Action icon="delete" onPress={() => {}} />
@@ -69,8 +72,7 @@ const Menu = ({ navigation }) => {
               { top: (BOTTOM_APPBAR_HEIGHT - MEDIUM_FAB_HEIGHT) / 2 },
             ]}
           /> */}
-          </Appbar>
-        </Pressable>
+        </Appbar>
       );
     }
   };
@@ -125,6 +127,7 @@ const OrderSummary = () => {
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.getTotalItems();
   const totalCost = cartItemsCtx.getTotalCost();
+
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>
       <Text>Order</Text>
