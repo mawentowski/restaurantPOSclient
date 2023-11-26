@@ -2,7 +2,7 @@ import * as React from "react";
 import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
 import { View, StyleSheet, Image } from "react-native";
 import { useContext } from "react";
-import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/cartItemsContext"; // Import your CartItemsContext
 
 const MakeAnother = ({
   visible,

@@ -1,7 +1,7 @@
 import { View, StyleSheet, ScrollView, FlatList } from "react-native";
 import { Card, Avatar, Button, Text } from "react-native-paper";
 import { useContext, useEffect, useState } from "react";
-import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../store/context/cartItemsContext"; // Import your CartItemsContext
 import PlaceOrderBar from "../components/OrderScreen/PlaceOrderBar";
 import menuData from "../menuData"; // Import your menu data
 

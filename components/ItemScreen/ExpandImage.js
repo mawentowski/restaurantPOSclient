@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Modal, Portal, Text, Button, PaperProvider } from "react-native-paper";
 import { View, StyleSheet, Image, StatusBar } from "react-native";
-import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/cartItemsContext"; // Import your CartItemsContext
 
 const ExpandImage = ({
   visible,

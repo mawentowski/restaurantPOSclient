@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, ScrollView, Image, Pressable } from "react-native";
 import { Appbar, useTheme, Text, Button, Portal } from "react-native-paper";
 import CounterComponent from "../components/ItemScreen/Counter";
-import { CartItemsContext } from "../store/context/CartItemsContext";
+import { CartItemsContext } from "../store/context/cartItemsContext";
 import * as calculateCostUtils from "../utils/calculateCost";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import { ExpandImage } from "../components/ItemScreen/ExpandImage";

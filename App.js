@@ -7,7 +7,7 @@ import OrderScreen from "./screens/Order";
 import CourseScreen from "./screens/Course";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import CartItemsContextProvider from "./store/context/CartItemsContext";
+import CartItemsContextProvider from "./store/context/cartItemsContext";
 
 const Stack = createNativeStackNavigator();
 

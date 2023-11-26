@@ -12,10 +12,10 @@ import { Pressable } from "react-native";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 // import OrderBar from "../components/OrderBar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-// import { CartItemsContext } from "../store/context/CartItemsContext"; // Import your CartItemsContext
+// import { CartItemsContext } from "../store/context/cartItemsContext"; // Import your CartItemsContext
 // import OrderPlaced from "../components/OrderPlaced";
 // import CounterComponent from "../components/Counter";
-import { CartItemsContext } from "../../store/context/CartItemsContext"; // Import your CartItemsContext
+import { CartItemsContext } from "../../store/context/cartItemsContext"; // Import your CartItemsContext
 // import * as calculateCostUtils from "../utils/calculateCost";
 import * as calculateCostUtils from "../../utils/calculateCost";
 
