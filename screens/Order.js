@@ -12,6 +12,8 @@ import {
   Text,
   Divider,
   useTheme,
+  List,
+  Surface,
 } from "react-native-paper";
 import { useContext, useEffect, useState } from "react";
 import { CartItemsContext } from "../store/context/cartItemsContext"; // Import your CartItemsContext
@@ -88,12 +90,33 @@ export default function OrderScreen({ navigation }) {
             <Text style={styles.addItemsLink}>Add Items</Text>
           </Pressable>
         </View>
-
-        <View>
-          {cartItemsArray.map((item, index) => (
-            <ItemRow key={index} item={item} />
+        <View style={[styles.cartItemsArrayContainer]}>
+          {cartItemsArray.map((item) => (
+            <List.Item
+              title={item.name}
+              key={item.id}
+              description={() => (
+                <Pressable
+                  style={styles.totalCartItemCostContainer}
+                  onPress={() => navigation.navigate("Menu")}
+                >
+                  <Text style={styles.addItemsLink}>Edit</Text>
+                </Pressable>
+              )}
+              left={(props) => (
+                <Surface style={styles.surface} elevation={1}>
+                  <Text>{item.quantity}x</Text>
+                </Surface>
+              )}
+              right={() => (
+                <View>
+                  <Text>${item.itemCost}</Text>
+                </View>
+              )} // Add your custom function here
+            />
           ))}
         </View>
+
         <Divider />
         <View style={styles.orderSummaryContainer}>
           <View style={[styles.container]}>
@@ -109,34 +132,21 @@ export default function OrderScreen({ navigation }) {
               ${roundedTaxedAmt}
             </Text>
           </View>
-          <View style={[styles.container]}>
-            <Text variant="labelLarge">Total</Text>
-            <Text style={styles.totalCartItemCostContainer}>
-              ${roundedTotalCost}
-            </Text>
-          </View>
         </View>
       </View>
 
-      <PlaceOrderBar navigation={navigation}></PlaceOrderBar>
+      <PlaceOrderBar
+        navigation={navigation}
+        roundedTotalCost={roundedTotalCost}
+      ></PlaceOrderBar>
     </ScrollView>
   );
 }
 
-const ItemRow = ({ item }) => {
-  return (
-    <View style={styles.container}>
-      <View style={styles.cartItemQuantityContainer}>
-        <Text>{item.quantity}</Text>
-      </View>
-      <View style={styles.cartItemOrderInfo}>
-        <Text>{item.name} </Text>
-      </View>
-      <View style={styles.cartItemsubTotal}>
-        <Text>${item.itemCost} </Text>
-      </View>
-    </View>
-  );
+const ListItemRight = () => {
+  <View>
+    <Text>Test</Text>;
+  </View>;
 };
 const styles = StyleSheet.create({
   orderDetailsContainer: {
@@ -155,6 +165,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
   },
+
+  cartItemsArrayContainer: {
+    paddingLeft: 16,
+    paddingRight: 0,
+    margin: 0,
+    marginRight: -7,
+    // flexDirection: "row",
+    // justifyContent: "flex-start",
+    // alignItems: "center",
+  },
+
   cartItemQuantityContainer: {
     // width: 20,
     // height: 20,
@@ -171,4 +192,10 @@ const styles = StyleSheet.create({
   cartItemsubTotal: {},
 
   addItemsLink: {},
+  surface: {
+    height: 20,
+    width: 20,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });

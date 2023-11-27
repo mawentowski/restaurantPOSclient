@@ -129,6 +129,10 @@ const CartItemScreen = ({ route, navigation }) => {
 import PlaceOrderBar from "../components/PlaceOrderBar";
 // You can set timers using UseEffect
 
+
+
+
+
 ```
 
 ### Redux

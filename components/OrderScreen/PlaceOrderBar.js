@@ -15,7 +15,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { CartItemsContext } from "../../store/context/cartItemsContext"; // Import your CartItemsContext
 import OrderPlaced from "./OrderPlaced";
 
-const PlaceOrderBar = ({ navigation }) => {
+const PlaceOrderBar = ({ navigation, roundedTotalCost }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;
   const MEDIUM_FAB_HEIGHT = 56;
   const { bottom } = useSafeAreaInsets();
@@ -41,8 +41,8 @@ const PlaceOrderBar = ({ navigation }) => {
         <Appbar.Content
           title={
             <PlaceOrderBarContent
-              totalCost={totalCost}
               navigation={navigation}
+              roundedTotalCost={roundedTotalCost}
             />
           }
         ></Appbar.Content>
@@ -66,7 +66,7 @@ const PlaceOrderBar = ({ navigation }) => {
   );
 };
 
-const PlaceOrderBarContent = ({ totalCost, navigation }) => {
+const PlaceOrderBarContent = ({ navigation, roundedTotalCost }) => {
   // const cartItemsCtx = useContext(CartItemsContext);
   // const itemCount = cartItemsCtx.getTotalItems();
   // const totalCost = cartItemsCtx.getSubTotal();
@@ -75,11 +75,17 @@ const PlaceOrderBarContent = ({ totalCost, navigation }) => {
   const showModal = () => setVisible(true); // Function to show the modal
   // const hideModal = () => setVisible(false);
   useEffect(() => {
-    console.log("totalCost typeof", typeof totalCost);
+    console.log("roundedTotalCost typeof", typeof roundedTotalCost);
   });
 
   return (
     <View style={[styles.makeAnotherBtnContainer]}>
+      <View style={[styles.container]}>
+        <Text variant="titleMedium">Total</Text>
+        <Text variant="titleLarge" style={styles.totalCartItemCostContainer}>
+          ${roundedTotalCost}
+        </Text>
+      </View>
       <View style={styles.modalView}>
         <Button
           mode="contained"
@@ -131,6 +137,14 @@ const styles = StyleSheet.create({
 
   totalPrice: {
     marginLeft: "auto",
+  },
+
+  container: {
+    // padding: 16,
+    paddingVertical: 16,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   // fab: {
   //   position: "absolute",
