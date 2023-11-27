@@ -58,7 +58,17 @@ export default function OrderScreen({ navigation }) {
 
     Object.keys(cartItems).forEach((id) => {
       const quantity = cartItems[id];
-      const item = menuData.appetizers.find((appetizer) => appetizer.id === id);
+      let item = menuData.appetizers.find((appetizer) => appetizer.id === id);
+
+      // If not found in appetizers, find in mainCourses
+      if (!item) {
+        item = menuData.mainCourses.find((mainCourse) => mainCourse.id === id);
+      }
+
+      // If not found in mainCourses, find in desserts
+      if (!item) {
+        item = menuData.desserts.find((dessert) => dessert.id === id);
+      }
 
       if (item) {
         console.log(" quantity typeof is", typeof quantity);
