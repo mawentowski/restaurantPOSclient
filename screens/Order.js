@@ -72,16 +72,22 @@ export default function OrderScreen({ navigation }) {
 
       if (item) {
         console.log(" quantity typeof is", typeof quantity);
+
         console.log(" item.pricetypeof is", typeof item.price);
         const itemCost = costCalculationUtils.roundCost(quantity * item.price);
 
         newCartItemsArray.push({
           id: id,
+          description: item.description,
+          image: item.image,
+          price: item.price,
           quantity: quantity,
           name: item.name,
           itemCost: itemCost,
         });
       }
+      console.log("The item in the order screen looks like", item);
+      console.log("the typeof item is:", typeof item);
     });
 
     // Update the state with the new array
@@ -108,7 +114,7 @@ export default function OrderScreen({ navigation }) {
               description={() => (
                 <Pressable
                   style={styles.totalCartItemCostContainer}
-                  onPress={() => navigation.navigate("Menu")}
+                  onPress={() => navigation.navigate("Item", { item: item })}
                 >
                   <Text style={styles.addItemsLink}>Edit</Text>
                 </Pressable>

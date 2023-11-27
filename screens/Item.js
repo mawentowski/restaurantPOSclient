@@ -8,17 +8,44 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import { ExpandImage } from "../components/ItemScreen/ExpandImage";
 import ExpandImage from "../components/ItemScreen/ExpandImage";
 
+// It needs to determine if this an UPDATE order, or an ADD TO order
+// maybe UPDATE = false.
+// Order screem object it passes needs to be edited to match item below: itemLooksLike
+// This is what Orderscreen looks like
+
 const ItemScreen = ({ route, navigation }) => {
   const BOTTOM_APPBAR_HEIGHT = 110;
   const { bottom } = useSafeAreaInsets();
   const theme = useTheme();
   const { item } = route.params;
+
+  const MarkAnotherLooksLike = [
+    {
+      description: "Description for Appetizer 1",
+      id: "appetizer-1",
+      image: 2,
+      name: "appetizer-1",
+      price: 5.5,
+    },
+  ];
+
+  const ItemInTheOrderScreen = [
+    {
+      description: "Description for Appetizer 1",
+      id: "appetizer-1",
+      image: 2,
+      name: "appetizer-1",
+      price: 5.5,
+    },
+  ];
+
   const cartItemsCtx = useContext(CartItemsContext);
   const initialCount = 1;
   const [count, setCount] = useState(initialCount);
   const [currentQuantity, setCurrentQuantity] = useState(0);
 
   useEffect(() => {
+    console.log("the item is the ItemScreen looks like:", item);
     console.log("count type:", typeof count);
     console.log("Rounded item cost:", roundedSingleItemPrice);
   });
