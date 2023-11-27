@@ -13,7 +13,7 @@ const MakeAnother = ({
 }) => {
   const cartItemsCtx = useContext(CartItemsContext);
   const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
-  // const totalCost = cartItemsCtx.getTotalCost();
+  // const totalCost = cartItemsCtx.getSubTotal();
   return (
     <View>
       <Portal>

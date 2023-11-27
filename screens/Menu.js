@@ -126,7 +126,7 @@ const Menu = ({ navigation }) => {
 const OrderSummary = () => {
   const cartItemsCtx = useContext(CartItemsContext);
   const itemCount = cartItemsCtx.getTotalItems();
-  const totalCost = cartItemsCtx.getTotalCost();
+  const totalCost = cartItemsCtx.getSubTotal();
 
   return (
     <View style={{ flexDirection: "row", alignItems: "center" }}>

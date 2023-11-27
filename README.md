@@ -222,3 +222,50 @@ const random = {
   "appetizer-2": 1,
 };
 ```
+
+We need to calculate the subTotal as a number then in the end present it as a string
+We need to set the tax percentage, then
+
+```javascript
+// subTotal set to 0 initially, managed by context
+// taxpercentage also managed
+//
+
+const [subTotal, updateSubTotal] = useState(0);
+const [taxPercentage, setTaxPercentage] = useState(0.8);
+
+function getTaxPercentage() {
+  return taxPercentage;
+}
+
+function getRoundedTaxedAmt() {
+  const taxedAmt = subTotal - subTotal * taxPercentage;
+  const roundedTaxedAmt = taxedAmt.toFixed(2);
+  return roundedTaxedAmt;
+}
+
+function getTotalCost() {
+  const taxedAmt = subTotal - subTotal * taxPercentage;
+  console.log("taxedAmt:", taxedAmt);
+  console.log("typeof taxedAmt:", typeof taxedAmt);
+  const totalCost = subTotal + taxedAmt;
+  console.log("totalCost", totalCost);
+  console.log("typeof totalCost", typeof totalCost);
+  // const roundedTotalCost = parseFloat(totalCost.toFixed(2));
+  roundedTotalCost = totalCost.toFixed(2);
+  console.log("roundedTotalCost ", roundedTotalCost);
+  console.log("typeof roundedTotalCost ", typeof roundedTotalCost);
+  return roundedTotalCost;
+}
+
+// retrieve
+const roundedTaxedAmt = cartItemsCtx.getRoundedTaxedAmt();
+const taxedPercentage = cartItemsCtx.getTaxPercentage();
+const totalCost = cartItemsCtx.getTotalCost();
+//
+
+import * as getSubTotalUtils from "../../utils/getSubTotal";
+{
+  getSubTotalUtils.roundCost(price);
+}
+```

@@ -8,7 +8,7 @@ export const CartItemsContext = createContext({
   setCartItemQuantity: (id, quantity) => {},
   getCartItemQuantity: (id) => 0,
   getTotalItems: () => 0,
-  getTotalCost: () => 0,
+  getSubTotal: () => 0,
   getCartItemsList: () => {},
 });
 
@@ -54,9 +54,9 @@ function CartItemsContextProvider({ children }) {
     return quantities.reduce((total, quantity) => total + quantity, 0);
   }
 
-  // In this updated CartItemsContextProvider, we've added a getTotalCost function that iterates through the cartItems and calculates the total cost by multiplying the quantity of each item by its corresponding price from menuData.
+  // In this updated CartItemsContextProvider, we've added a getSubTotal function that iterates through the cartItems and calculates the total cost by multiplying the quantity of each item by its corresponding price from menuData.
 
-  function getTotalCost() {
+  function getSubTotal() {
     console.log("Calculating total cost...");
 
     // Create a variable to store the total cost and initialize it to 0
@@ -87,10 +87,10 @@ function CartItemsContextProvider({ children }) {
     });
 
     // Format the total cost with two decimal places (e.g., "5.50")
-    totalCost = totalCost.toFixed(2);
+    // totalCost = totalCost.toFixed(2);
 
     // Log the total cost before returning it
-    console.log(`Total Cost: ${totalCost}`);
+    console.log(`Total Cost: ${totalCost}`, typeof totalCost);
 
     // Return the totalCost, which is the calculated total cost of all items in the cart
     return totalCost;
@@ -109,7 +109,7 @@ function CartItemsContextProvider({ children }) {
     setCartItemQuantity,
     getCartItemQuantity,
     getTotalItems,
-    getTotalCost,
+    getSubTotal,
     getCartItemsList,
   };
 

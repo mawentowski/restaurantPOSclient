@@ -21,7 +21,7 @@ const PlaceOrderBar = ({ navigation }) => {
   const { bottom } = useSafeAreaInsets();
   const theme = useTheme();
   const cartItemsCtx = useContext(CartItemsContext);
-  const totalCost = cartItemsCtx.getTotalCost();
+  const totalCost = cartItemsCtx.getSubTotal();
   //   <Pressable onPress={() => navigation.navigate("OrderDetails")}>
   useEffect(() => {
     console.log("totalCost typeof", typeof totalCost);
@@ -69,7 +69,7 @@ const PlaceOrderBar = ({ navigation }) => {
 const PlaceOrderBarContent = ({ totalCost, navigation }) => {
   // const cartItemsCtx = useContext(CartItemsContext);
   // const itemCount = cartItemsCtx.getTotalItems();
-  // const totalCost = cartItemsCtx.getTotalCost();
+  // const totalCost = cartItemsCtx.getSubTotal();
   const [visible, setVisible] = useState(false); // State to control the visibility of the modal
 
   const showModal = () => setVisible(true); // Function to show the modal

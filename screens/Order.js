@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { CartItemsContext } from "../store/context/cartItemsContext"; // Import your CartItemsContext
 import PlaceOrderBar from "../components/OrderScreen/PlaceOrderBar";
 import menuData from "../menuData"; // Import your menu data
+import * as costCalculationUtils from "../utils/costCalculationUtils";
 
 export default function OrderScreen({ navigation }) {
   // const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
@@ -11,9 +12,27 @@ export default function OrderScreen({ navigation }) {
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
 
   const cartItems = cartItemsCtx.cartItems;
-  const totalCost = cartItemsCtx.getTotalCost();
-  // Looks like:
-  // {"appetizer-1": 1, "appetizer-2": 1};
+  // returns number
+  const subTotal = cartItemsCtx.getSubTotal();
+  console.log("typeof subTotal:", typeof subTotal);
+  const taxPercentage = 0.8;
+  console.log("typeof taxPercentage:", typeof taxPercentage);
+  const taxedAmt = subTotal - subTotal * taxPercentage;
+  console.log("typeof taxedAmt:", typeof taxedAmt);
+  const roundedTaxedAmt = costCalculationUtils.roundCost(taxedAmt);
+  const totalCost = costCalculationUtils.calculateTotalCost(subTotal, taxedAmt);
+  console.log("typeof totalCost:", typeof totalCost);
+
+  const roundedSubTotal = costCalculationUtils.roundCost(subTotal);
+  console.log(
+    "roundedSubTotalis the following type before being rendered",
+    typeof roundedSubTotal
+  );
+  const roundedTotalCost = costCalculationUtils.roundCost(totalCost);
+  console.log(
+    "roundedTotalCost the following type before being rendered",
+    typeof roundedTotalCost
+  );
 
   const [cartItemsArray, setCartItemsArray] = useState([]);
 
@@ -26,9 +45,10 @@ export default function OrderScreen({ navigation }) {
       const item = menuData.appetizers.find((appetizer) => appetizer.id === id);
 
       if (item) {
-        const itemCost = (quantity * item.price).toFixed(2);
+        console.log(" quantity typeof is", typeof quantity);
+        console.log(" item.pricetypeof is", typeof item.price);
+        const itemCost = costCalculationUtils.roundCost(quantity * item.price);
 
-        // Create an object for each item and push it to the array
         newCartItemsArray.push({
           id: id,
           quantity: quantity,
@@ -50,10 +70,6 @@ export default function OrderScreen({ navigation }) {
           <Text style={styles.totalCartItemCostContainer}>Add Items</Text>
         </View>
 
-        {/* Flatlist that isn't scrollable
-
-         */}
-
         <View>
           {cartItemsArray.map((item, index) => (
             <ItemRow key={index} item={item} />
@@ -62,12 +78,24 @@ export default function OrderScreen({ navigation }) {
         <View style={styles.orderSummaryContainer}>
           <View style={[styles.container]}>
             <Text>Subtotal</Text>
-            <Text style={styles.totalCartItemCostContainer}>{totalCost}</Text>
+            <Text style={styles.totalCartItemCostContainer}>
+              ${roundedSubTotal}
+            </Text>
+          </View>
+
+          <View style={[styles.container]}>
+            <Text>Tax ({taxPercentage}%)</Text>
+            <Text style={styles.totalCartItemCostContainer}>
+              ${roundedTaxedAmt}
+            </Text>
+          </View>
+          <View style={[styles.container]}>
+            <Text>Total</Text>
+            <Text style={styles.totalCartItemCostContainer}>
+              ${roundedTotalCost}
+            </Text>
           </View>
         </View>
-
-        {/* <View styles={styles.container}>
-        </View> */}
       </View>
 
       <PlaceOrderBar navigation={navigation}></PlaceOrderBar>
@@ -84,8 +112,8 @@ const ItemRow = ({ item }) => {
       <View style={styles.cartItemOrderInfo}>
         <Text>{item.name} </Text>
       </View>
-      <View style={styles.cartItemTotalCost}>
-        <Text>{item.itemCost} </Text>
+      <View style={styles.cartItemsubTotal}>
+        <Text>${item.itemCost} </Text>
       </View>
     </View>
   );
@@ -120,5 +148,5 @@ const styles = StyleSheet.create({
     maxWidth: 180,
   },
 
-  cartItemTotalCost: {},
+  cartItemsubTotal: {},
 });
