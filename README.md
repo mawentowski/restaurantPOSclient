@@ -100,7 +100,7 @@ useEffect(() => { console.log("count type:", typeof count);
     console.log("item.price type:", typeof roundedItemCost);
   });
   // pass util functions (traditional exported JS functions) and accessing specific functions
-import * as calculateCostUtils from "../utils/calculateCost";
+import * as calculateCostUtils from "../utils/costCalculationUtils";
 const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
 // Pass arguments with navigation:
 onPress={() => {

@@ -10,7 +10,7 @@ import { Text } from "react-native-paper";
 
 import { useContext } from "react";
 import { CartItemsContext } from "../../store/context/cartItemsContext"; // Import your CartItemsContext
-import * as calculateCostUtils from "../../utils/calculateCost";
+import * as costCalculationUtils from "../../utils/costCalculationUtils";
 
 const MenuItem = ({ handleMenuItemPress, item }) => {
   const { id, name, image, price } = item;
@@ -47,7 +47,7 @@ const MenuItem = ({ handleMenuItemPress, item }) => {
       <View style={styles.cardItemInfoContainer}>
         <Text style={styles.itemName}>{name}</Text>
         <Text style={styles.itemPrice}>
-          {calculateCostUtils.roundCost(price)}
+          {costCalculationUtils.roundCost(price)}
         </Text>
       </View>
     </Pressable>

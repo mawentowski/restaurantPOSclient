@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Image, Pressable } from "react-native";
 import { Appbar, useTheme, Text, Button, Portal } from "react-native-paper";
 import CounterComponent from "../components/ItemScreen/Counter";
 import { CartItemsContext } from "../store/context/cartItemsContext";
-import * as calculateCostUtils from "../utils/calculateCost";
+import * as costCalculationUtils from "../utils/costCalculationUtils";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 // import { ExpandImage } from "../components/ItemScreen/ExpandImage";
 import ExpandImage from "../components/ItemScreen/ExpandImage";
@@ -36,7 +36,7 @@ const ItemScreen = ({ route, navigation }) => {
     setCount(count > 0 ? count - 1 : 0);
   };
 
-  const roundedSingleItemPrice = calculateCostUtils.roundCost(item.price);
+  const roundedSingleItemPrice = costCalculationUtils.roundCost(item.price);
 
   const [showExpandImage, setExpandImage] = useState(false);
   // const [currentItem, setCurrentItem] = useState({});
@@ -117,7 +117,7 @@ const ItemScreen = ({ route, navigation }) => {
               >
                 {count === 0
                   ? "Back to Menu"
-                  : `Add to order - $${calculateCostUtils.calculateCostByCount(
+                  : `Add to order - $${costCalculationUtils.calculateCostByCount(
                       count,
                       roundedSingleItemPrice
                     )}`}
