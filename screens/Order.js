@@ -1,5 +1,18 @@
-import { View, StyleSheet, ScrollView, FlatList } from "react-native";
-import { Card, Avatar, Button, Text } from "react-native-paper";
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  FlatList,
+  Pressable,
+} from "react-native";
+import {
+  Card,
+  Avatar,
+  Button,
+  Text,
+  Divider,
+  useTheme,
+} from "react-native-paper";
 import { useContext, useEffect, useState } from "react";
 import { CartItemsContext } from "../store/context/cartItemsContext"; // Import your CartItemsContext
 import PlaceOrderBar from "../components/OrderScreen/PlaceOrderBar";
@@ -9,6 +22,7 @@ import * as costCalculationUtils from "../utils/costCalculationUtils";
 export default function OrderScreen({ navigation }) {
   // const LeftContent = (props) => <Avatar.Icon {...props} icon="folder" />;
   const cartItemsCtx = useContext(CartItemsContext);
+  const theme = useTheme();
   // const cartItemQuantity = cartItemsCtx.getCartItemQuantity(item.id);
 
   const cartItems = cartItemsCtx.cartItems;
@@ -66,8 +80,13 @@ export default function OrderScreen({ navigation }) {
     <ScrollView style={styles.orderDetailsContainer}>
       <View style={[styles.orderSummaryContainer]}>
         <View style={[styles.container]}>
-          <Text>Order Summary</Text>
-          <Text style={styles.totalCartItemCostContainer}>Add Items</Text>
+          <Text variant="titleMedium">Order Summary</Text>
+          <Pressable
+            style={styles.totalCartItemCostContainer}
+            onPress={() => navigation.navigate("Menu")}
+          >
+            <Text style={styles.addItemsLink}>Add Items</Text>
+          </Pressable>
         </View>
 
         <View>
@@ -75,22 +94,23 @@ export default function OrderScreen({ navigation }) {
             <ItemRow key={index} item={item} />
           ))}
         </View>
+        <Divider />
         <View style={styles.orderSummaryContainer}>
           <View style={[styles.container]}>
-            <Text>Subtotal</Text>
+            <Text variant="labelLarge">Subtotal</Text>
             <Text style={styles.totalCartItemCostContainer}>
               ${roundedSubTotal}
             </Text>
           </View>
 
           <View style={[styles.container]}>
-            <Text>Tax ({taxPercentage}%)</Text>
+            <Text variant="labelLarge">Tax ({taxPercentage}%)</Text>
             <Text style={styles.totalCartItemCostContainer}>
               ${roundedTaxedAmt}
             </Text>
           </View>
           <View style={[styles.container]}>
-            <Text>Total</Text>
+            <Text variant="labelLarge">Total</Text>
             <Text style={styles.totalCartItemCostContainer}>
               ${roundedTotalCost}
             </Text>
@@ -149,4 +169,6 @@ const styles = StyleSheet.create({
   },
 
   cartItemsubTotal: {},
+
+  addItemsLink: {},
 });
