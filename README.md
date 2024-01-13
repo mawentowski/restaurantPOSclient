@@ -273,3 +273,9 @@ import * as getSubTotalUtils from "../../utils/getSubTotal";
   getSubTotalUtils.roundCost(price);
 }
 ```
+
+## Next steps:
+
+Currently, when click makeAnother, and you change the quantity, it overrides the existing quantity rather than adds to it.
+
+The current behavior needs to happen when you click the quanity in the MakeAnotehr screen.
