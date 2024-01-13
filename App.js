@@ -1,20 +1,50 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider } from "react-native-paper";
+import { registerRootComponent } from "expo";
+import HomeScreen from "./screens/Home";
+import MenuScreen from "./screens/Menu";
+import ItemScreen from "./screens/Item";
+import OrderScreen from "./screens/Order";
+import CourseScreen from "./screens/Course";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import CartItemsContextProvider from "./store/context/cartItemsContext";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <PaperProvider>
+      <CartItemsContextProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen
+              name="Home"
+              component={HomeScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Menu"
+              component={MenuScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="Item"
+              component={ItemScreen}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="Order" component={OrderScreen} />
+            {/* <Stack.Screen name="Course" component={CourseScreen} /> */}
+
+            <Stack.Screen
+              name="CourseScreen"
+              component={CourseScreen}
+              initialParams={{}}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </CartItemsContextProvider>
+    </PaperProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+registerRootComponent(App);
